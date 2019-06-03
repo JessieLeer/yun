@@ -1,0 +1,38 @@
+a{
+	text-decoration: none;
+}
+
+.mine-cell-mine .mint-cell-wrapper{
+	background-size: 120% 0px	
+}
+
+dl{
+	margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+	
+dd{
+  -webkit-margin-start: 0px;
+}
+	
+.picker-items .picker-slot:nth-child(3){
+	display: none;
+}
+
+.search .mint-searchbar{
+	background-color: #eaeaea;
+}
+
+.search-good .mint-searchbar{
+	padding: 0;
+}
+
+.tab-nav .mint-tab-item-label{
+	font-size: 14px;
+}
+
+.pop-wrapper .mint-cell-wrapper{
+	font-size: 14px;
+	padding: 0
+}
+	
