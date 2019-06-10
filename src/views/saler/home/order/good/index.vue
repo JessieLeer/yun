@@ -49,25 +49,44 @@
 				</section>
 			</div>
 		</div>
-		<mt-popup v-model="popupVisible" position="bottom">
+		<mt-popup v-model="popupVisible" position="bottom" v-bind:closeOnClickModal='false' class='popup'>
 			<div class='pop-wrapper f-fs2'>
-			  <header class='pop-header'>{{selected.name}}</header>
-				<dl class='mr-30 f-ib'>
-				  <dt class='f-ib'>库存：</dt>
-					<dd class='f-ib'>{{selected.store}}</dd>
-				</dl>
-				<dl class='f-ib'>
-				  <dt class='f-ib'>核算价：</dt>
-					<dd class='f-ib'>{{selected.accounting}}</dd>
-				</dl>
-				<p class='color-7a7a7a mt-6 mb-6'>选择批号</p>
-				<i class='lotnum f-csp f-fsn' v-for='(item,index) in selected.lotnums' v-bind:class='item == selectedLot ? "lotnum-cur" : "lotnum-def"' v-on:click='changeLotnum(item)'>{{item}}</i>
-				<mt-field label="采购数量：" placeholder='请输入采购数量' v-model="selected.count" class='mt-10' type='number' v-bind:state='selected.count == "" ? "warning" : "success"'></mt-field>
-				<mt-field label="销售价格：" placeholder='请输入销售价格' v-model="selected.price" type='number' v-bind:state='selected.price == "" ? "warning" : "success"'></mt-field>
-				<mt-cell v-bind:value="'小计：¥' + Math.ceil(selected.count*selected.price)">
-				</mt-cell>
+				<mt-cell class='good-cell' v-bind:title="selected.name" v-bind:value="'核算价:' + selected.accounting"></mt-cell>
+				<section class='bread'>
+				  <dl class='f-ib'>
+						<dt class='f-ib'>库存：</dt>
+						<dd class='f-ib'>{{selected.store}}</dd>
+					</dl>
+					<dl class='f-ib'>
+						<dt class='f-ib'>已选：</dt>
+						<dd class='f-ib'>{{selected.count}}件</dd>
+					</dl>
+					<dl class='color-E43A3D f-fwb f-ib f-tar'>
+						<dt class='f-ib'>小计：</dt>
+						<dd class='f-ib'>¥{{selected.price}}</dd>
+					</dl>
+				</section>
+				<mt-field v-bind:placeholder="pricePlaceholder" v-model='editingPrice' type='number' v-bind:min='0' v-bind:disabled='selectedLot.editable ? false : true'>
+				  <mt-button size="small" v-bind:disabled='priceUnsubable' v-on:click='changePrice'>确定</mt-button>
+				</mt-field>
+				<div class='lotnum-area'>
+					<mt-cell v-for='(item,index) in selected.lotnums' v-bind:key='index'>
+						<div slot='title' class='lotnum-wrapper'>
+							<mt-button  size='small' class='lotnum' v-bind:class='item == selectedLot ? "lotnum-cur" : "lotnum-def"' v-on:click='changeLotnum(item)'>
+								<i class='f-fl f-fsn'>{{item.id}}</i> 
+								<i class='f-fr f-fsn'>¥{{item.price}}</i>
+							</mt-button>
+							<section class='count-wrapper f-tar'>
+								<mt-button size='small' class='count-opera' v-bind:disabled='item.count == "0" ? true : false' v-on:click='indec(item,-5)'>-</mt-button>
+								<i class='count-count f-tac f-ib f-fsn'>{{item.count}}</i>
+								<mt-button size='small' class='count-opera' v-bind:disabled='item.count == item.store ? true : false' v-on:click='indec(item,5)'>+</mt-button>
+							</section>
+						</div>
+					</mt-cell>
+				</div>
+				<br><br>
 				<section class='btn-wrapper'>
-				  <mt-button type="default" size='small' class='pop-btn' v-on:click='popupVisible = false'>取消</mt-button>
+				  <mt-button type="default" size='small' class='pop-btn' v-on:click='closePop'>取消</mt-button>
           <mt-button type="danger" size='small' class='pop-btn pop-btn-sure'>确定</mt-button>
 				</section>
 			</div>

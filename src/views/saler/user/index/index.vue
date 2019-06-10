@@ -17,17 +17,17 @@
 			</i>
 		  <mt-button type="danger" size='small' class='f-fr'>积分规则</mt-button>
 		</mt-cell>
-		<mt-cell class='bg-white mt-8' title='现金账户' is-link to='/user/account'>
-		  <i slot='icon' class='iconfont'>&#xe602;</i>
+		<mt-cell class='bg-white' title='现金账户' is-link to='/user/account'>
+			<img src='../../../../assets/image/cash.png' slot='icon' class='user-icon'>
 		</mt-cell>
-		<mt-cell class='bg-white mt-8' title='我的订单' is-link to='/user/order'>
-		  <i slot='icon' class='iconfont'>&#xe652;</i>
+		<mt-cell class='bg-white' title='我的订单' is-link to='/user/order'>
+			<img src='../../../../assets/image/myorder.png' slot='icon' class='user-icon'>
 		</mt-cell>
-		<mt-cell class='bg-white mt-8' title='客户资料' is-link>
-		  <i slot='icon' class='iconfont'>&#xe634;</i>
+		<mt-cell class='bg-white' title='客户资料' is-link>
+			<img src='../../../../assets/image/customer.png' slot='icon' class='user-icon'>
 		</mt-cell>
-		<mt-cell class='bg-white mt-8' title='设置' is-link to='/user/setting'>
-		  <i slot='icon' class='iconfont'>&#xe603;</i>
+		<mt-cell class='bg-white' title='设置' is-link to='/user/setting'>
+			<img src='../../../../assets/image/setting.png' slot='icon' class='user-icon'>
 		</mt-cell>
 	</div>
 </template>

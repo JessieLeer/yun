@@ -2,7 +2,7 @@ export default {
 	name: 'login',
 	data() {
 		return {
-			name: 'login',
+			name: '',
 			password: '',
 			state: {
 				name: '',
@@ -15,7 +15,7 @@ export default {
 			this.state.name = val == '' ? 'warning' : 'success'
 		},
 		password(val) {
-			this.state.password = val.length < 6 ? 'warning' : 'success'
+			this.state.password = val.length < 1 ? 'warning' : 'success'
 		}
 	},
 	computed: {

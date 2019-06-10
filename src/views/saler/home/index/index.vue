@@ -1,37 +1,39 @@
 <template>
-  <div class='inner-main'>
-	  <header class='header'>
-		  <mt-cell class='search f-csp'>
-			  <section slot='title'>
-				  <i class='iconfont mr-10'>&#xe639;</i>
-			 	  搜索商品名称/商品编号/助记码
+  <div class='inner-main' ref='inner' id='inner'>
+		<header class='header'>
+			<mt-cell class='search f-csp'>
+				<section slot='title'>
+					<i class='iconfont mr-10'>&#xe639;</i>
+					搜索商品名称/商品编号/助记码
 				</section>
 			</mt-cell>
 			<router-link slot='right' to='/login' class='login f-tac'>登录</router-link>
 		</header>
-		<mt-swipe :auto="4000">
-			<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' >
-			  <img v-bind:src='item.image' width='100%' v-on:click='go(item.url)'>
-			</mt-swipe-item>
-		</mt-swipe>
-		<nav class='nav f-cb'>
-		  <router-link to='/good/promotion' class='nav-item f-tac f-fl'>
-			  <i class='iconfont'>&#xe606;</i>
-				<br>促销
-			</router-link>
-			<router-link to='/good/cate' class='nav-item f-tac f-fl'>
-			  <b class='iconfont'>&#xe636;</b>
-				<br>分类
-			</router-link>
-			<router-link to='/' class='nav-item f-tac f-fl'>
-			  <b class='iconfont'>&#xe652;</b>
-				<br>订单
-			</router-link>
-			<router-link to='/bulletin' class='nav-item f-tac f-fl'>
-			  <i class='iconfont'>&#xe606;</i>
-				<br>公告
-			</router-link>
-		</nav>
+		<div class='g-header'>
+			<mt-swipe class='banner-wrapper' :auto="4000">
+				<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' class='f-tac'>
+					<img v-bind:src='item.image' width='90%' v-on:click='go(item.url)' class='banner' ref='banner0'>
+				</mt-swipe-item>
+			</mt-swipe>
+			<nav class='nav f-cb'>
+				<router-link to='/good/promotion' class='nav-item f-tac f-fl'>
+					<img src='../../../../assets/image/sale.png' width='33'>
+					<br>促销
+				</router-link>
+				<router-link to='/good/cate' class='nav-item f-tac f-fl'>
+					<img src='../../../../assets/image/cate.png' width='33'>
+					<br>分类
+				</router-link>
+				<router-link to='/' class='nav-item f-tac f-fl'>
+					<img src='../../../../assets/image/order.png' width='33'>
+					<br>订单
+				</router-link>
+				<router-link to='/bulletin' class='nav-item f-tac f-fl'>
+					<img src='../../../../assets/image/bulletin.png' width='33'>
+					<br>公告
+				</router-link>
+			</nav>
+		</div>
 		<section class='notice'>
 		  <i class='notice-index f-fsn'>通知公告：</i>
 			<vue-seamless-scroll v-bind:data="notices" class='seamless-warp' v-bind:class-option="classOption">

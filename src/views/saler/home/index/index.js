@@ -80,6 +80,12 @@ export default {
 		vueSeamlessScroll,
 		tabbar
 	},
+	mounted() {
+		let w = document.body.clientWidth > 750 ? 750 : document.body.clientWidth
+		document.getElementsByClassName('mint-swipe')[0].style.height = w*310/614*0.9 + 'px'
+	},
+	created() {
+	},
 	methods: {
 		go(url) {
 			this.$router.push(url)

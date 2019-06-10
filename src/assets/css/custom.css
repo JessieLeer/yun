@@ -36,3 +36,27 @@ dd{
 	padding: 0
 }
 	
+.form-login .mint-field-core{
+	line-height: 3;
+}
+
+.form-login .mint-field-wrapper{
+	backgroupnd-image: linear-gradient(180deg, #ffffff, #ffffff 50%, transparent 50%);
+	backgroupnd-image: -webkit-gradient(180deg, #ffffff, #ffffff 50%, transparent 50%);
+}
+
+.login-field .mint-field-core{
+	text-indent: 20px;
+}
+
+.login-field .mint-field-other{
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	right: auto;
+}
+
+.good-cell .mint-cell-wrapper{
+	background-position: bottom left;
+}
+	
