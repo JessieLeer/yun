@@ -2,6 +2,10 @@ a{
 	text-decoration: none;
 }
 
+.mint-header-title{
+	font-size: 18px;
+}
+
 .mine-cell-mine .mint-cell-wrapper{
 	background-size: 120% 0px	
 }
@@ -37,7 +41,7 @@ dd{
 }
 	
 .form-login .mint-field-core{
-	line-height: 3;
+	line-height: 3.4;
 }
 
 .form-login .mint-field-wrapper{
@@ -51,12 +55,66 @@ dd{
 
 .login-field .mint-field-other{
 	position: absolute;
-	top: 20px;
+	top: 22px;
 	left: 10px;
 	right: auto;
 }
 
+.form-login .mint-cell-wrapper{
+	background-position: bottom left
+}
+
 .good-cell .mint-cell-wrapper{
 	background-position: bottom left;
+}
+	
+.second-name .mint-cell-text{
+	color: #959595;
+}
+.mint-searchbar-inner .mintui-search{
+	font-size: 16px;
+	margin-left: 4px;
+}
+
+.mint-searchbar-inner{
+	padding: 6px;
+}
+
+.back{
+	font-size: 20px;
+}
+
+.user-info .mint-cell-wrapper, .user-password .mint-cell-wrapper, .user-account .mint-cell-wrapper{
+	background-position: bottom left;
+}
+
+.user-info .mint-cell-label{
+	margin-bottom: 8px;
+	font-size: 16px;	
+	line-height: 30px;
+	color: #333;
+}
+
+.user-info .mint-cell-text,.user-account .mint-cell-text{
+	font-size: 14px;
+	color: #777;
+}
+
+.price-input,.price-input input{
+	background-color: #F7F9FA;
+}
+
+.mine-cell-mine .mint-cell-allow-right::after{
+	border: solid 2px white;
+  border-bottom-width: 0;
+  border-left-width: 0;
+}
+
+.picker-item.picker-selected{
+	color: #FF5242;
+}
+
+.shopcar-cell .mint-cell-wrapper{
+	background-image: none;
 }
 	

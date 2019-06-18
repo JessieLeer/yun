@@ -12,6 +12,7 @@ import UserAccount from '@/views/saler/user/account/index.vue'
 import UserOrder from '@/views/saler/user/order/index/index.vue'
 import UserOrderSearch from '@/views/saler/user/order/search/index.vue'
 import UserOrderShow from '@/views/saler/user/order/show/index.vue'
+import UserCustomer from '@/views/saler/user/customer/index.vue'
 import Shopcar from '@/views/saler/home/shopcar/index/index.vue'
 import ShopcaResult from '@/views/saler/home/shopcar/result/index.vue'
 import Order from '@/views/saler/home/order/customer/index.vue'
@@ -91,6 +92,11 @@ export default new Router({
 					name: 'userOrderShow',
 					component: UserOrderShow
 				},
+				{
+					path: 'customer',
+					name: 'UserCustomer',
+					component: UserCustomer
+				}
       ]
     },
 		{

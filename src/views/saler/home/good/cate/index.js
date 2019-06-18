@@ -99,11 +99,16 @@ export default {
 	},
 	mounted() {
 		let wh = window.innerHeight
+		let ww = window.innerWidth > 750 ? window.innerWidth : 750
 		this.$refs.aside.style.height = wh + 'px'
+		this.$refs.aside.style.left = (ww-750)/2 + 'px'
 	},
 	methods: {
 		back() {
 			this.$router.back()
+		},
+		go(url) {
+			this.$router.push(url)
 		},
 		changeCate(cate) {
 			this.curcate = cate

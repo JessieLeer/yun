@@ -35,13 +35,13 @@ export default {
 				}
 			],
 			classOption: {
-				step: 0.4,
+				step: 0.2,
 				limitMoveNum: 2
 			},
 			hots: [
 				{
 					id: '1',
-					name: '口腔炎喷雾剂',
+					name: '口腔炎喷雾剂口腔炎喷雾剂口腔炎喷雾剂口腔炎喷雾剂口腔炎喷雾剂',
 					specification: '0.25*100p/瓶',
 					formulation: '片剂',
 					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg',
@@ -82,7 +82,7 @@ export default {
 	},
 	mounted() {
 		let w = document.body.clientWidth > 750 ? 750 : document.body.clientWidth
-		document.getElementsByClassName('mint-swipe')[0].style.height = w*310/614*0.9 + 'px'
+		document.getElementsByClassName('mint-swipe')[0].style.height = w*310/614 + 'px'
 	},
 	created() {
 	},

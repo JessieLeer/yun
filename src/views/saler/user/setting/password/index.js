@@ -9,6 +9,10 @@ export default {
 			},
 		}
 	},
+	mounted() {
+		let h = window.innerHeight
+		this.$refs.inner.style.height = h + 'px'
+	},
 	computed: {
 		stateOld() {
 			return this.password.old.length < 6 ? 'warning' : 'success'

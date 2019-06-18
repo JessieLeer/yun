@@ -1,3 +1,5 @@
+import tabbar from '@/components/tabbar/index.vue'
+
 export default {
 	name: 'userIndex',
 	data() {
@@ -12,5 +14,6 @@ export default {
 		}
 	},
 	components: {
+		tabbar
 	}
 }

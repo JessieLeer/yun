@@ -1,8 +1,8 @@
 <template>
   <div class='inner-main' ref='inner' id='inner'>
 		<header class='header'>
-			<mt-cell class='search f-csp'>
-				<section slot='title'>
+			<mt-cell class='search f-csp' >
+				<section slot='title' v-on:click='go("/good/list")'>
 					<i class='iconfont mr-10'>&#xe639;</i>
 					搜索商品名称/商品编号/助记码
 				</section>
@@ -12,25 +12,25 @@
 		<div class='g-header'>
 			<mt-swipe class='banner-wrapper' :auto="4000">
 				<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' class='f-tac'>
-					<img v-bind:src='item.image' width='90%' v-on:click='go(item.url)' class='banner' ref='banner0'>
+					<img v-bind:src='item.image' width='100%' v-on:click='go(item.url)' class='banner' ref='banner0'>
 				</mt-swipe-item>
 			</mt-swipe>
 			<nav class='nav f-cb'>
-				<router-link to='/good/promotion' class='nav-item f-tac f-fl'>
-					<img src='../../../../assets/image/sale.png' width='33'>
-					<br>促销
+				<router-link to='/good/promotion' class='nav-item f-tac f-fl f-fs2'>
+					<img src='../../../../assets/image/sale.png' width='32'>
+					<p>促销</p>
 				</router-link>
-				<router-link to='/good/cate' class='nav-item f-tac f-fl'>
-					<img src='../../../../assets/image/cate.png' width='33'>
-					<br>分类
+				<router-link to='/good/cate' class='nav-item f-tac f-fl f-fs2'>
+					<img src='../../../../assets/image/cate.png' width='32'>
+					<p>分类</p>
 				</router-link>
-				<router-link to='/' class='nav-item f-tac f-fl'>
-					<img src='../../../../assets/image/order.png' width='33'>
-					<br>订单
+				<router-link to='/user/order' class='nav-item f-tac f-fl f-fs2'>
+					<img src='../../../../assets/image/order.png' width='32'>
+					<p>订单</p>
 				</router-link>
-				<router-link to='/bulletin' class='nav-item f-tac f-fl'>
-					<img src='../../../../assets/image/bulletin.png' width='33'>
-					<br>公告
+				<router-link to='/bulletin' class='nav-item f-tac f-fl f-fs2'>
+					<img src='../../../../assets/image/bulletin.png' width='32'>
+					<p>公告</p>
 				</router-link>
 			</nav>
 		</div>
@@ -38,14 +38,14 @@
 		  <i class='notice-index f-fsn'>通知公告：</i>
 			<vue-seamless-scroll v-bind:data="notices" class='seamless-warp' v-bind:class-option="classOption">
 			  <router-link v-for='(item,index) in notices' v-bind:key='index' to='/' class='notice-item f-db'>
-				  {{item.title}} 
+				  {{item.title.substr(0,18)}}... 
 				</router-link>
 			</vue-seamless-scroll>
 		</section>
 		<h2 class='hot-title f-tac'>热销产品</h2>
 		<ul class='hots f-tac'>
 		  <li class='hot f-tal f-ib' v-for='(item,index) in hots' v-bind:key='index'>
-			  <router-link to='/'>
+			  <router-link to='/good/show'>
 				  <img v-bind:src='item.image' class='hot-image'>
 					<h3 class='hot-name f-fs2'>{{item.name}}</h3>
 					<mt-badge size="small" color='#fafafa' class='hot-badge'>{{item.specification}}</mt-badge>

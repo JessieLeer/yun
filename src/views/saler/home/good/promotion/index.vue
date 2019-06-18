@@ -1,7 +1,7 @@
 <template>
   <div class='inner-main'>
 	  <mt-header fixed class='header' title="促销商品">
-			<mt-button icon="back" slot='left' v-on:click='back'></mt-button>
+			<i class='iconfont ml-10' v-on:click='back' slot='left'>&#xe625;</i>
 		</mt-header>
 		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
 			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
@@ -12,7 +12,7 @@
 							<h3 class='hot-name f-fs2'>{{item.name}}</h3>
 							<mt-badge size="small" color='#fafafa' class='hot-badge'>{{item.specification}}</mt-badge>
 							<mt-badge size='small' color='#fafafa' class='hot-badge'>{{item.formulation}}</mt-badge>
-							<i class='hot-sold f-fsn f-db f-tar f-fs1'>¥{{item.price}}</i>
+							<i class='hot-sold f-fsn f-db f-tar f-fs2'>¥{{item.price}}</i>
 						</router-link>
 					</li>
 				</ul>

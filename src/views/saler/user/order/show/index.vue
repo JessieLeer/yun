@@ -13,7 +13,7 @@
 		<div class='order-info f-fs2'>
 			<dl>
 				<dt class='f-ib f-tar'>订单总额：</dt>
-				<dd class='price f-ib'>¥{{order.amount}}</dd>
+				<dd class='pricer f-ib'>¥{{order.amount}}</dd>
 			</dl>
 			<dl>
 				<dt class='f-ib f-tar'>订单号：</dt>
@@ -33,11 +33,11 @@
 			</dl>
 		</div>
 		<div v-for='(item,index) in order.goods' v-bind:key='index' >
-			<div class='order-wrapper'>
+			<div class='order-wrapper' v-on:click='go("/good/show")'>
 			  <section class='order-image'>
 			    <img v-bind:src='item.image' width='100'>
 				</section>
-				<section class='order-info'>
+				<section class='good-info'>
 				  <h4 class='order-title f-fs2'>{{item.title}}</h4>
 					<p class='order-bread f-fs1'>{{item.specification}} 批号：{{item.lotNum}}</p>
 					<p class='order-bread f-fs1'>{{item.company}}</p>
@@ -48,9 +48,6 @@
 					</section>
 				</section>
 			</div>
-			<mt-cell title="">
-			  <mt-button type="default" size='small' class='cancel f-fs1' v-on:click='cancel'>取消订单</mt-button>
-			</mt-cell>
 		</div>	
 	</div>	
 </template>

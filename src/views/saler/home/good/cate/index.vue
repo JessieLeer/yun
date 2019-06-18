@@ -1,11 +1,11 @@
 <template>
   <div class='inner-main'>
 	  <header class='header'>
-		  <mt-button icon="back" class='back' v-on:click='back'></mt-button>
+			<i class='iconfont ml-10' v-on:click='back' slot='left'>&#xe625;</i>
 		  <mt-cell class='search f-csp'>
-			  <section slot='title'>
+			  <section slot='title' v-on:click='go("/good/list")'>
 				  <i class='iconfont'>&#xe639;</i>
-			 	  搜索商品名称/商品编号/助记码
+			 	  <i class='f-fs1 f-fsn'>搜索商品名称/商品编号/助记码</i>
 				</section>
 			</mt-cell>
 		</header>
@@ -16,13 +16,13 @@
 				</ul>
 			</aside>
 			<div class='cate-con'>
-			  <div v-for='(item,index) in cateData' v-bind:key='index'>
+			  <div class='cate-con-wrapper' v-for='(item,index) in cateData' v-bind:key='index'>
 					<mt-cell v-bind:title="item.name" to="/good/list" is-link class='second-name'></mt-cell>
 					<ul class='cate-thirds'>
 						<li class='cate-third f-tac f-ib' v-for='(child,i) in item.children'>
 							<router-link to='/good/list'>
 								<img v-bind:src='child.image' class='cate-image'>
-								<h4 class='cate-name'>{{child.name}}</h4>
+								<h4 class='cate-name f-fs2 f-fwn'>{{child.name}}</h4>
 							</router-link>
 						</li>
 					</ul>

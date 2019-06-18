@@ -40,6 +40,10 @@ export default {
 			]
 		}
 	},
+	mounted() {
+		let w = document.body.clientWidth > 750 ? 750 : document.body.clientWidth
+		document.getElementsByClassName('mint-swipe')[0].style.height = w*310/614 + 'px'
+	},
 	components: {
 		Swipe,
 		SwipeItem

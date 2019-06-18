@@ -5,7 +5,7 @@
 				<mt-button icon="back"></mt-button>
 			</router-link>
 		</mt-header>
-		<mt-cell>
+		<mt-cell class='pt-10 pb-10'>
 			<section slot='title'>
 			  <i class='money iconfont'>&#xe602;</i>
 				<br>
@@ -17,11 +17,11 @@
 			<section class='w-50 f-fl'>
 				<mt-button class='btn' v-on:click='typePickerShow = true'>
 					{{search.type}}
-					<i class='iconfont'>&#xe632;</i>
+					<i class='iconfont dropdown'>&#xe632;</i>
 				</mt-button>
 				<mt-button class='btn' v-on:click='openMonth'>
 					{{monthFormat}}
-					<i class='iconfont'>&#xe632;</i>
+					<i class='iconfont dropdown'>&#xe632;</i>
 				</mt-button>
 			</section>
 			<section class='count w-50 f-fs2 f-fr f-tar'>
@@ -37,7 +37,8 @@
 		</div>
 		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
 			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
-				<mt-cell v-for='(item,index) in bills' v-bind:key='index' v-bind:title="item.type + '类型：' + item.conType" v-bind:label="item.time">
+				<mt-cell v-for='(item,index) in bills' v-bind:key='index' v-bind:title="item.type + '类型：' + item.conType" v-bind:label="item.time" class='user-account f-pr pt-30'>
+				  <b class='type f-fwn'>{{item.type}}</b>
 				  <b class='account'>{{item.amount}}</b>
 				</mt-cell>
 			</mt-loadmore>

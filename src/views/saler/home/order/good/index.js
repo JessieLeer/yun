@@ -56,7 +56,9 @@ export default {
 				},
 			],
 			popupVisible: false,
-			selected: {},
+			selected: {
+				lotnums: []
+			},
 			selectedLot: {},
 			editingPrice: '',
 		}
@@ -67,11 +69,21 @@ export default {
 		},
 		priceUnsubable() {
 			return this.selectedLot.editable && !isNaN(parseFloat(this.editingPrice)) ? false : true
+		},
+		totalPrice() {
+			let price = 0
+			for(let item of this.selected.lotnums) {
+				price += item.count * item.price
+			}
+			return price
 		}
 	},
 	methods: {
 		back() {
 			this.$router.back()
+		},
+		go(url) {
+			this.$router.push(url)
 		},
 		edit(item) {
 			this.popupVisible = true
@@ -97,6 +109,7 @@ export default {
 		changePrice() {
 			this.selectedLot.price = this.editingPrice
 			this.editingPrice = ''
+			this.selectedLot = {}
 		},
 		indec(item, num) {
 			if(item.count + num < 0) {
@@ -106,6 +119,9 @@ export default {
 			}else{
 				item.count += num
 			}
+		},
+		countInput(item){
+			item.count = item.count > item.store ? item.store : item.count
 		},
 		closePop() {
 			this.popupVisible = false

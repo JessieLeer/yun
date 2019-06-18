@@ -23,8 +23,8 @@
 			  </mt-button>
 			</router-link>
 		</section>
-		<div v-for='(item,index) in orders' v-bind:key='index'>
-		  <mt-cell v-bind:title="item.customer" is-link>
+		<div v-for='(item,index) in orders' v-bind:key='index' class='order-area'>
+		  <mt-cell v-bind:title="item.customer" is-link to='/order/good'>
 			  <span class='status f-fs2'>{{item.status}}</span>
 			</mt-cell>
 			<router-link to='/user/order/show' class='f-db w-100'>
@@ -47,7 +47,7 @@
 			</mt-cell>
 		</div>	
 		<mt-popup v-model="cusVisible" position="bottom" class='w-100'>
-			<mt-index-list class='w-100'>
+			<mt-index-list class='cus-index w-100'>
 				<mt-index-section index="A">
 					<mt-checklist
 						title=""
@@ -70,7 +70,7 @@
 					</mt-checklist>
 				</mt-index-section>
 			</mt-index-list>
-			<mt-button type="danger" size='large' v-on:click='cusVisible = false'>确定</mt-button>
+			<mt-button type="danger" size='large' class='btn-sure' v-on:click='cusVisible = false'>确定</mt-button>
 		</mt-popup>
 	</div>	
 </template>
