@@ -5,97 +5,19 @@ export default {
 			curcate: '1',
 			cate: {
 				firsts: [
-					{
-						id: '1',
-						name: '中药材及饮片'
-					},
-					{
-						id: '2',
-						name: '医疗器械'
-					},
-					{
-						id: '3',
-						name: '药品'
-					}
 				]
 			},
 			cateData: [
-				{
-					id: '1',
-					name: '抗菌药物',
-					children: [
-						{
-							id: '1',
-							name: '抗生素类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '2',
-							name: '合成菌类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '3',
-							name: '抗真菌类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '4',
-							name: '抗生素类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '5',
-							name: '合成菌类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '6',
-							name: '抗真菌类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-					]
-				},
-				{
-					id: '1',
-					name: '神经系统用药',
-					children: [
-						{
-							id: '1',
-							name: '抗生素类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '2',
-							name: '合成菌类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '3',
-							name: '抗真菌类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '4',
-							name: '抗生素类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '5',
-							name: '合成菌类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-						{
-							id: '6',
-							name: '抗真菌类',
-							image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557831533908&di=1e275391a00793ad285af39fd44f3a8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172409_jk5cu.thumb.700_0.jpeg'
-						},
-					]
-				}
 			]
 		}
 	},
-	created() {
+	computed: {
+		user() {
+			return this.$store.state.user
+		}
+	},
+ 	created() {
+		this.firstIndex()
 	},
 	mounted() {
 		let wh = window.innerHeight
@@ -110,8 +32,18 @@ export default {
 		go(url) {
 			this.$router.push(url)
 		},
+		/*-- 获取一级分类 --*/
+		firstIndex() {
+			this.$http.get('/api/m/product/findProductCategorysFirst', {params: {tenantId: this.user.groupId}}).then((res) => {
+				this.cate.firsts = res.data.data
+			})
+		},
+		/*-- 获取二级分类及商品 --*/
 		changeCate(cate) {
 			this.curcate = cate
+			this.$http.get('/api/m/product/findProductCategorys', {params: {id: cate}}).then((res) => {
+				this.cateData = res.data.data
+			})
 		}
 	}
 }

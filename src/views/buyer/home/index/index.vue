@@ -8,11 +8,12 @@
 				</section>
 			</mt-cell>
 			<router-link slot='right' to='/good/cate1' class='cate f-tac'>
-			  <b class='iconfont f-db'>&#xe636;</b>
+				<img src='../../../../assets/image/cater.png' width='16'><br>
 				<i class='f-fsn f-fs1'>分类</i>
 			</router-link>
 		</header>
-		<mt-cell v-bind:title="shop.name" is-link to='/company'></mt-cell>
+		<mt-cell v-bind:title="shop.name" to='/company' class='shop-name bg-grey' is-link>
+		</mt-cell>
 		<mt-swipe :auto="4000">
 			<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' >
 			  <img v-bind:src='item.image' width='100%' v-on:click='go(item.url)' class='banner' ref='banner0'>
@@ -27,8 +28,8 @@
 			</vue-seamless-scroll>
 		</section>
 		<mt-navbar class='tab-nav' v-model="current">
-			<mt-tab-item id="1">首页</mt-tab-item>
-			<mt-tab-item id="2">商品</mt-tab-item>
+			<mt-tab-item id="1" class='f-fs3 f-fwb'>首页</mt-tab-item>
+			<mt-tab-item id="2" class='f-fs3 f-fwb'>商品</mt-tab-item>
 		</mt-navbar>
 		<mt-tab-container v-model="current">
 			<mt-tab-container-item id="1">
@@ -38,12 +39,15 @@
 				<div v-for='(item,index) in regulars' v-bind:key='index' class='mt-10'>
 					<div class='order-wrapper'>
 						<section class='order-image'>
-							<img v-bind:src='item.image' width='120' class='f-fl'>
+							<img v-bind:src='item.image' width='110' class='f-fl'>
 						</section>
 						<section class='order-info'>
 							<h4 class='order-title f-fs2'>{{item.name}}</h4>
 							<p class='order-bread mb-6 f-fs1'>{{item.specification}}</p>
-							<p class='order-bread f-fs1'>{{item.company}}</p>
+							<p class='order-bread f-fs1'>
+							  <img src='../../../../assets/image/factory.png' width='14' class='factory'>
+							  {{item.company}}
+							</p>
 							<p class='opera f-csp f-pr f-fs1' v-on:click='edit(item)'>销售{{item.sold}}<i class='add f-fsn'>+</i></p>
 						</section>
 					</div>
@@ -56,22 +60,28 @@
 						<dd class='f-ib'>{{good.total}}</dd>
 					</dl>
 					<section class='good-condis f-tar'>
-					  <mt-button size="small" class='good-condi' v-bind:class='good.filter == "推荐" ? "good-cur" : ""' v-on:click='changeFilter("推荐")'>推荐</mt-button>
-						<mt-button size="small" class='good-condi' v-bind:class='good.filter == "新品" ? "good-cur" : ""' v-on:click='changeFilter("新品")'>新品</mt-button>
-						<mt-button size="small" class='good-condi' v-bind:class='good.filter == "销量" ? "good-cur" : ""' v-on:click='changeFilter("销量")'>销量</mt-button>
+					  <mt-button size="small" class='good-condi' v-bind:class='good.filter == "推荐" ? "good-cur" : "good-def"' v-on:click='changeFilter("推荐")'>推荐</mt-button>
+						<mt-button size="small" class='good-condi' v-bind:class='good.filter == "新品" ? "good-cur" : "good-def"' v-on:click='changeFilter("新品")'>新品</mt-button>
+						<mt-button size="small" class='good-condi pr-20 f-pr' v-bind:class='good.filter == "销量" ? "good-cur" : "good-def"' v-on:click='changeFilter("销量")'>销量
+						  <img src='../../../../assets/image/salevol.png' width='20' v-if='good.filter != "销量"' class='salevol'>
+							<img src='../../../../assets/image/salevol_cur.png' width='20' v-if='good.filter == "销量"' class='salevol'>
+						</mt-button>
 					</section>
 				</header>
-				<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
+				<div ref="wrapper">
 					<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
 					  <div v-for='(item,index) in good.data' v-bind:key='index' class='mt-10'>
 							<div class='order-wrapper'>
 								<section class='order-image'>
-									<img v-bind:src='item.image' width='120' class='f-fl'>
+									<img v-bind:src='item.image' width='110' class='f-fl'>
 								</section>
 								<section class='order-info'>
 									<h4 class='order-title f-fs2'>{{item.name}}</h4>
 									<p class='order-bread mb-6 f-fs1'>{{item.specification}}</p>
-									<p class='order-bread f-fs1'>{{item.company}}</p>
+									<p class='order-bread f-fs1'>
+									  <img src='../../../../assets/image/factory.png' width='14' class='factory'>
+									  {{item.company}}
+									</p>
 									<p class='opera f-csp f-pr f-fs1' v-on:click='edit(item)'>销售{{item.sold}}<i class='add f-fsn'>+</i></p>
 								</section>
 							</div>
@@ -80,9 +90,9 @@
 				</div>	
 			</mt-tab-container-item>
 		</mt-tab-container>
-		<nav class='portnav'>
+		<nav class='portnav' ref='portnav'>
 			<router-link to='/user1/index'>
-			  <i class='iconfont'>&#xe60c;</i>
+			  <i class='iconfont'>&#xe60f;</i>
 			</router-link>
 			<router-link to='/shopcar1' class='f-pr'>
 			  <i class='iconfont' style='border-right: none; font-size: 28px; top: 1px;'>&#xe605;</i>
@@ -101,7 +111,7 @@
 					</dl>
 					<dl class='f-ib'>
 						<dt class='f-ib'>已选：</dt>
-						<dd class='f-ib'>{{selected.count}}件</dd>
+						<dd class='f-ib'>{{totalCount}}件</dd>
 					</dl>
 					<dl class='color-E43A3D f-fwb f-ib f-tar'>
 						<dt class='f-ib'>小计：</dt>
@@ -124,7 +134,7 @@
 					</mt-cell>
 				</div>
 			</div>
-			<br>
+			<hr color='#fff' size='1' class='hr'>
 			<footer class='btn-wrapper'>
 				<mt-button type="default" size='small' class='pop-btn' v-on:click='closePop'>取消</mt-button>
         <mt-button type="danger" size='small' class='pop-btn pop-btn-sure'>确定</mt-button>

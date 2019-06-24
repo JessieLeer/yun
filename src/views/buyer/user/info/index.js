@@ -1,5 +1,5 @@
 export default {
-	name: 'userInfo',
+	name: 'user1Info',
 	data() {
 		return {
 			user: {

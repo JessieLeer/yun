@@ -6,15 +6,16 @@
 			<i class='f-fsn f-fs2'>{{user.name}}</i>
 		</header>
 		<br>
-		<mt-cell class='bg-white mt-8' title='我的订单' is-link to=''>
-		  <i slot='icon' class='iconfont'>&#xe652;</i>
+		<mt-cell class='bg-white mt-8' title='我的订单' is-link to='/user1/order'>
+		  <img src='../../../../assets/image/myorder.png' slot='icon' class='user-icon'>
 		</mt-cell>
 		<mt-cell class='bg-white mt-8' title='负责业务员' is-link to='/user1/info'>
-		  <i slot='icon' class='iconfont'>&#xe634;</i>
+		  <img src='../../../../assets/image/customer.png' slot='icon' class='user-icon'>
 		</mt-cell>
-		<mt-cell class='bg-white mt-8' title='设置' is-link to=''>
-		  <i slot='icon' class='iconfont'>&#xe603;</i>
+		<mt-cell class='bg-white mt-8' title='设置' is-link to='/user1/setting'>
+		  <img src='../../../../assets/image/setting.png' slot='icon' class='user-icon'>
 		</mt-cell>
+		<tabbar selected='/user1/index'></tabbar>
 	</div>
 </template>
 

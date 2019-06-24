@@ -28,7 +28,10 @@ import BulletinShow from '@/views/saler/home/bulletin/show/index.vue'
 /** 采购商端 **/
 import User1 from '@/views/buyer/user/index.vue'
 import User1Index from '@/views/buyer/user/index/index.vue'
+import User1Order from '@/views/buyer/user/order/search/index.vue'
 import User1Info from '@/views/buyer/user/info/index.vue'
+import User1Setting from '@/views/buyer/user/setting/index/index.vue'
+import User1Password from '@/views/buyer/user/setting/password/index.vue'
 import Index1 from '@/views/buyer/home/index/index.vue'
 import Shopcar1 from '@/views/buyer/home/shopcar/index/index.vue'
 import GoodCate1 from '@/views/buyer/home/good/cate/index.vue'
@@ -140,7 +143,7 @@ export default new Router({
 			component: GoodPromotion
 		},
 		{
-			path: '/good/show',
+			path: '/good/show/:id',
 			name: 'goodShow',
 			component: GoodShow
 		},
@@ -167,10 +170,25 @@ export default new Router({
           component: User1Index
         },
 				{
+					path: 'order',
+					name: 'user1Order',
+					component: User1Order
+				},
+				{
 					path: 'info',
 					name: 'user1Info',
           component: User1Info
-				}
+				},
+				{
+					path: 'setting',
+					name: 'user1Setting',
+					component: User1Setting
+				},
+				{
+					path: 'password',
+					name: 'user1Password',
+					component: User1Password
+				},
 			]
 		},
 		{

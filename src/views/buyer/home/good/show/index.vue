@@ -1,25 +1,31 @@
 <template>
   <div class='inner-main'>
-	  <mt-button icon="back" class='back' v-on:click='back'></mt-button>
+	  <mt-button icon="back" class='back f-tac' v-on:click='back'></mt-button>
 	  <mt-swipe :auto="4000">
 			<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' >
-			  <img v-bind:src='item.image' width='100%' v-on:click='go(item.url)'>
+			  <img v-bind:src='item.image' width='100%' v-on:click='go(item.url)' class='banner' ref='banner0'>
 			</mt-swipe-item>
 		</mt-swipe>
 		<div class='good-info'>
-		  <b class='price'>{{good.price}}</b>
-			<h3 class='name f-fs2'>{{good.name}}</h3>
-			<mt-badge size="small" class='formation f-fs1' color='#fff'>{{good.specification}}</mt-badge>
-			<mt-badge size="small" class='formation f-fs1' color='#fff'>{{good.formulation}}</mt-badge>
+		  <div class='pl-10 pr-10'>
+				<b class='price'>{{good.price}}</b>
+				<h3 class='name f-fs2'>{{good.name}}</h3>
+				<mt-badge size="small" class='formation f-fs1' color='#fff'>{{good.specification}}</mt-badge>
+				<mt-badge size="small" class='formation f-fs1' color='#fff'>{{good.formulation}}</mt-badge>
+			</div>
 			<br>
-			<dl class='mr-20 f-ib f-fs2'>
-				<dt class='color-grey f-ib'>库存：</dt>
-				<dd class='f-ib'>{{good.store}}</dd>
-			</dl>
-			<dl class='f-ib f-fs2'>
-				<dt class='color-grey f-ib'>件装数量：</dt>
-				<dd class='f-ib'>{{good.package}}</dd>
-			</dl>
+			<div class='store-area pl-10 pr-10'>
+				<section class='store-wrapper'>
+					<dl class='mr-20 f-ib f-fs2'>
+						<dt class='color-grey f-ib'>库存：</dt>
+						<dd class='f-ib'>{{good.store}}</dd>
+					</dl>
+					<dl class='f-ib f-fs2'>
+						<dt class='color-grey f-ib'>件装数量：</dt>
+						<dd class='f-ib'>{{good.package}}</dd>
+					</dl>
+				</section>
+			</div>
 		</div>
 		<mt-navbar v-model="activited" class='tab-nav'>
 			<mt-tab-item id="1">商品详情</mt-tab-item>
@@ -56,8 +62,8 @@
 			</mt-tab-container-item>
 		</mt-tab-container>
 		<footer class='footer'>
-		  <section class='shopcar f-pr f-tac'>
-		    <i class='iconfont'>&#xe605;</i>
+		  <section class='shopcar f-pr f-tac' v-on:click='go("/shopcar")'>
+		    <i class='iconfont icon-shopcar'>&#xe605;</i>
 				<i class='shopcar-num f-fsn' v-if='shopcars.length > 0'>{{shopcars.length}}</i>
 			</section>
 			<mt-button type="danger" size='small' class='add'><i class='addicon iconfont'>&#xe658;</i>加入购物车</mt-button>

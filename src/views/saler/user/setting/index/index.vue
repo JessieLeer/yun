@@ -7,7 +7,7 @@
 		</mt-header>
 		<mt-cell title="修改密码" is-link to='/user/password'></mt-cell>
 		<section class='f-tac'>
-		  <mt-button type="default" class='logout'>退出登录</mt-button>
+		  <mt-button type="default" class='logout' v-on:click='logout'>退出登录</mt-button>
 		</section>
 	</div>
 </template>

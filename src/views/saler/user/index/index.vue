@@ -1,14 +1,14 @@
 <template>
   <div>
 	  <header class='g-hd f-pr'>
-			<mt-cell v-bind:title="user.phone" is-link class='mine-cell-mine' to='/user/info'>
-				<img slot="icon" v-bind:src='user.avatar' class='avatar' width="24" height="24">
+			<mt-cell v-bind:title="user.mobile" is-link class='mine-cell-mine' to='/user/info'>
+				<img slot="icon" v-bind:src='user.avatar ? user.avatar : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556360175017&di=68c8a1242f15b3842dbe5e36a7d57752&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fblog%2F201506%2F05%2F20150605123522_QrniU.jpeg"' class='avatar' width="24" height="24">
 			</mt-cell>
 			<dl class='money'>
 			  <dt class='f-fs1'>我的余额（元）</dt>
-				<dd class='f-fwb'>{{user.money}}</dd>
+				<dd class='f-fwb'>{{user.point}}</dd>
 			</dl>
-			<i class='notice f-fs1 f-fsn'>{{user.notice}}</i>
+			<i class='notice f-fs1 f-fsn'>{{user.notice ? user.notice : '您的身份证已经到期，请及时更新'}}</i>
 		</header>
 		<mt-cell class='bg-white mb-8'>
 		  <i class='f-fsn' slot='title'>

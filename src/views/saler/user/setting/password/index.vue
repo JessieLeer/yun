@@ -15,7 +15,7 @@
 		<label class='label f-fs2'>确认新密码</label>
 		<mt-field class='user-password' placeholder="请确认密码" type="password" v-model="password.confirm"></mt-field>
 		<section class='f-tac'>
-		  <mt-button type="default" class='btn' v-bind:disabled='!subAble'>保存</mt-button>
+		  <mt-button type="default" class='btn' v-bind:disabled='!subAble' v-on:click='submit'>保存</mt-button>
 		</section>
 	</div>	
 </template>

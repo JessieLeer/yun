@@ -1,3 +1,5 @@
+import tabbar from '@/components/tabbar1/index.vue'
+
 export default {
 	name: 'user1Index',
 	data() {
@@ -11,5 +13,8 @@ export default {
 				score: 10
 			}
 		}
+	},
+	components: {
+		tabbar,
 	}
 }

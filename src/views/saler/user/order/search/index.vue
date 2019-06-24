@@ -7,7 +7,10 @@
 		</mt-header>
 		<mt-search v-model="name" cancel-text="取消" placeholder="商品名称/客户名称"></mt-search>
 		<div v-for='(item,index) in orders' v-bind:key='index' class='mt-10'>
-		  <mt-cell v-bind:title="item.customer" is-link>
+		  <mt-cell>
+			  <router-link to='/' slot='title' class='customer-name'>
+				  {{item.customer}} <i class='iconfont'>&#xe631;</i>
+				</router-link>
 			  <span class='status f-fs2'>{{item.status}}</span>
 			</mt-cell>
 			<div class='order-wrapper'>

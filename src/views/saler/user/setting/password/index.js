@@ -1,3 +1,5 @@
+import { Toast } from 'mint-ui'
+
 export default {
 	name: 'userPassword',
 	data() {
@@ -14,6 +16,9 @@ export default {
 		this.$refs.inner.style.height = h + 'px'
 	},
 	computed: {
+		user() {
+			return this.$store.state.user
+		},
 		stateOld() {
 			return this.password.old.length < 6 ? 'warning' : 'success'
 		},
@@ -31,6 +36,21 @@ export default {
 				}
 			}
 			return true
+		},
+	},
+	methods: {
+		submit() {
+			this.$http.put('/api/m/user/resetPwd', {userId: this.user.id, oldPwd: this.password.old, newPwd: this.password.new}).then((res) => {
+				Toast({
+					message: res.data.message
+				})
+				if(res.data.code == 'success') {
+					this.$store.commit('logout')
+					window.setTimeout(() => {
+						this.$router.push('/login')
+					},1500)
+				}
+			})
 		}
 	}
 }

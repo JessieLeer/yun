@@ -7,13 +7,9 @@ export default {
 			search: {
 				name: '',
 				type: '全部商品',
-				store: '库存>500',
-				formulation: '剂型',
+				store500Up: false,
+				formulation: '全部剂型',
 				manufacturers: [
-					'制药一厂',
-					'制药二厂',
-					'制药三厂',
-					'制药四厂'
 				],
 				result: []
 			},
@@ -24,23 +20,59 @@ export default {
 				'制药一厂',
 				'制药二厂',
 				'制药三厂',
-				'制药四厂'
+				'制药四厂',
+				'制药五厂',
+				'制药六厂',
 			],
+			isManuAll: false,
 			goods: [
 				{
-					id: '1',
-					name: '999鼻炎宁颗粒',
-					specification: '0.25*10g/瓶',
-					store: 28890,
-					deadline: '2010-11-01',
-					company: '四川异能药业有限公司',
-					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
-					accounting: 3.45,
-					price: 4.85,
-					lotnums: ['1111','2222','3333','4444'],
-					count: '',
-					sold: 23
-				},
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
 			],
 			page: {
 				current: 1,
@@ -50,24 +82,56 @@ export default {
 			contentH: 0,
 			popupVisible: false,
 			selectedLot: '',
-			selected: {}
+			selected: {
+				lotnums: []
+			}
 		}
 	},
 	computed: {
 		manuSelected() {
-			return this.search.manufacturers.length == this.manufacturers.length ? '全部厂家' : this.search.manufacturers.join(',').substr(0,8) + '...'
+			return this.search.manufacturers.length == this.manufacturers.length || this.search.manufacturers.length == 0 ? '全部厂家' : this.search.manufacturers.join(',').substr(0,4) + '...'
 		},
 		isAllLoaded() {
 			return this.page.current == this.page.total ? true : false
 		},
 		monthFormat() {
 			return this.msToDate(this.search.month).month
+		},
+		totalPrice() {
+			let price = 0
+			for(let item of this.selected.lotnums) {
+				price += item.count * item.price
+			}
+			return price
+		},
+		totalCount() {
+			let count = 0
+			for(let item of this.selected.lotnums) {
+				count += item.count
+			}
+			return count
+		}
+	},
+	watch: {
+		isManuAll(val, oldVal) {
+			if(val == true) {
+				this.search.manufacturers = this.manufacturers
+			}
+		},
+		'search.manufacturers'(val, oldVal) {
+			if(val.length == this.manufacturers.length) {
+				this.isManuAll = true
+			}else{
+				this.isManuAll = false
+			}
 		}
 	},
 	mounted() {
     this.$nextTick(() => {
       this.contentH = document.documentElement.clientHeight - 
       this.$refs.wrapper.getBoundingClientRect().top
+			
+			this.$refs.portnav.style.left = document.body.clientWidth > 750 ? (document.body.clientWidth - 750)/2 + 10 + 'px' : '10px'
     })
   },
 	methods: {
@@ -98,10 +162,39 @@ export default {
 		edit(item) {
 			this.popupVisible = true
 			this.selected = item
+			let lotPrices = this.selected.lotnums.map((item) => {
+				return item.price
+			})
+			let [min,max] = [
+				Math.min(...lotPrices),
+			  Math.max(...lotPrices)
+			]
+			this.selected.accounting = `${min}~${max}`
+			for(let item of this.selected.lotnums){
+				this.selected.count += item.count
+				this.selected.price += item.count * item.price
+			}
 		},
 		changeLotnum(item) {
 			this.selectedLot = item
-		}
+			this.selected.accounting = this.selectedLot.accounting
+			this.selected.store = this.selectedLot.store
+		},
+		indec(item, num) {
+			if(item.count + num < 0) {
+				item.count = 0
+			}else if(item.count + num > item.store) {
+				item.count = item.store
+			}else{
+				item.count += num
+			}
+		},
+ 		countInput(item){
+			item.count = item.count > item.store ? item.store : item.count
+		},
+		closePop() {
+			this.popupVisible = false
+		},
 	},
 	components: {
 		popup

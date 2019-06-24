@@ -90,13 +90,7 @@ export default {
 						}
 					],
 				},
-			],
-			selected: {},
-			selectedLot: '',
-			popupVisible: false,
-			good: {
-				data: [
-					{
+				{
 					id: '1',
 					name: '999鼻炎宁颗粒',
 					specification: '0.25*10g/瓶',
@@ -143,6 +137,809 @@ export default {
 						}
 					],
 				},
+				{
+					id: '1',
+					name: '999鼻炎宁颗粒',
+					specification: '0.25*10g/瓶',
+					store: 100, 
+					deadline: '2010-11-01',
+					company: '四川异能药业有限公司',
+					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+					price: 100,
+					oldPrice: 200,
+					accounting: 0,
+					count: 0,
+					lotnums: [
+						{
+							id: 11111111,
+							accounting: 3.55,
+							price: 3.45,
+							store: 10,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 22222222,
+							accounting: 4.55,
+							price: 4.45,
+							store: 18,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 33333333,
+							accounting: 5.55,
+							price: 5.45,
+							store: 30,
+							editable: false,
+							count: 0
+						},
+						{
+							id: 44444444,
+							accounting: 6.55,
+							price: 6.45,
+							store: 40,
+							editable: false,
+							count: 10
+						}
+					],
+				},
+				{
+					id: '1',
+					name: '999鼻炎宁颗粒',
+					specification: '0.25*10g/瓶',
+					store: 100, 
+					deadline: '2010-11-01',
+					company: '四川异能药业有限公司',
+					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+					price: 100,
+					oldPrice: 200,
+					accounting: 0,
+					count: 0,
+					lotnums: [
+						{
+							id: 11111111,
+							accounting: 3.55,
+							price: 3.45,
+							store: 10,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 22222222,
+							accounting: 4.55,
+							price: 4.45,
+							store: 18,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 33333333,
+							accounting: 5.55,
+							price: 5.45,
+							store: 30,
+							editable: false,
+							count: 0
+						},
+						{
+							id: 44444444,
+							accounting: 6.55,
+							price: 6.45,
+							store: 40,
+							editable: false,
+							count: 10
+						}
+					],
+				},
+				{
+					id: '1',
+					name: '999鼻炎宁颗粒',
+					specification: '0.25*10g/瓶',
+					store: 100, 
+					deadline: '2010-11-01',
+					company: '四川异能药业有限公司',
+					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+					price: 100,
+					oldPrice: 200,
+					accounting: 0,
+					count: 0,
+					lotnums: [
+						{
+							id: 11111111,
+							accounting: 3.55,
+							price: 3.45,
+							store: 10,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 22222222,
+							accounting: 4.55,
+							price: 4.45,
+							store: 18,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 33333333,
+							accounting: 5.55,
+							price: 5.45,
+							store: 30,
+							editable: false,
+							count: 0
+						},
+						{
+							id: 44444444,
+							accounting: 6.55,
+							price: 6.45,
+							store: 40,
+							editable: false,
+							count: 10
+						}
+					],
+				},
+				{
+					id: '1',
+					name: '999鼻炎宁颗粒',
+					specification: '0.25*10g/瓶',
+					store: 100, 
+					deadline: '2010-11-01',
+					company: '四川异能药业有限公司',
+					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+					price: 100,
+					oldPrice: 200,
+					accounting: 0,
+					count: 0,
+					lotnums: [
+						{
+							id: 11111111,
+							accounting: 3.55,
+							price: 3.45,
+							store: 10,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 22222222,
+							accounting: 4.55,
+							price: 4.45,
+							store: 18,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 33333333,
+							accounting: 5.55,
+							price: 5.45,
+							store: 30,
+							editable: false,
+							count: 0
+						},
+						{
+							id: 44444444,
+							accounting: 6.55,
+							price: 6.45,
+							store: 40,
+							editable: false,
+							count: 10
+						}
+					],
+				},
+				{
+					id: '1',
+					name: '999鼻炎宁颗粒',
+					specification: '0.25*10g/瓶',
+					store: 100, 
+					deadline: '2010-11-01',
+					company: '四川异能药业有限公司',
+					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+					price: 100,
+					oldPrice: 200,
+					accounting: 0,
+					count: 0,
+					lotnums: [
+						{
+							id: 11111111,
+							accounting: 3.55,
+							price: 3.45,
+							store: 10,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 22222222,
+							accounting: 4.55,
+							price: 4.45,
+							store: 18,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 33333333,
+							accounting: 5.55,
+							price: 5.45,
+							store: 30,
+							editable: false,
+							count: 0
+						},
+						{
+							id: 44444444,
+							accounting: 6.55,
+							price: 6.45,
+							store: 40,
+							editable: false,
+							count: 10
+						}
+					],
+				},
+				{
+					id: '1',
+					name: '999鼻炎宁颗粒',
+					specification: '0.25*10g/瓶',
+					store: 100, 
+					deadline: '2010-11-01',
+					company: '四川异能药业有限公司',
+					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+					price: 100,
+					oldPrice: 200,
+					accounting: 0,
+					count: 0,
+					lotnums: [
+						{
+							id: 11111111,
+							accounting: 3.55,
+							price: 3.45,
+							store: 10,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 22222222,
+							accounting: 4.55,
+							price: 4.45,
+							store: 18,
+							editable: true,
+							count: 0
+						},
+						{
+							id: 33333333,
+							accounting: 5.55,
+							price: 5.45,
+							store: 30,
+							editable: false,
+							count: 0
+						},
+						{
+							id: 44444444,
+							accounting: 6.55,
+							price: 6.45,
+							store: 40,
+							editable: false,
+							count: 10
+						}
+					],
+				},
+			],
+			popupVisible: false,
+			good: {
+				data: [
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
+					{
+						id: '1',
+						name: '999鼻炎宁颗粒',
+						specification: '0.25*10g/瓶',
+						store: 100, 
+						deadline: '2010-11-01',
+						company: '四川异能药业有限公司',
+						image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg',
+						price: 100,
+						oldPrice: 200,
+						accounting: 0,
+						count: 0,
+						lotnums: [
+							{
+								id: 11111111,
+								accounting: 3.55,
+								price: 3.45,
+								store: 10,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 22222222,
+								accounting: 4.55,
+								price: 4.45,
+								store: 18,
+								editable: true,
+								count: 0
+							},
+							{
+								id: 33333333,
+								accounting: 5.55,
+								price: 5.45,
+								store: 30,
+								editable: false,
+								count: 0
+							},
+							{
+								id: 44444444,
+								accounting: 6.55,
+								price: 6.45,
+								store: 40,
+								editable: false,
+								count: 10
+							}
+						],
+					},
 				],
 				total: 1000,
 				filter: '推荐'
@@ -154,7 +951,8 @@ export default {
 			},
 			contentH: 0,
 			selected: {
-				lotnums: []
+				lotnums: [],
+				count: 0
 			},
 			selectedLot: {},
 			editingPrice: '',
@@ -176,7 +974,17 @@ export default {
 				price += item.count * item.price
 			}
 			return price
+		},
+		totalCount() {
+			let count = 0
+			for(let item of this.selected.lotnums) {
+				count += item.count
+			}
+			return count
 		}
+	},
+	watch: {
+		
 	},
 	mounted() {
     this.$nextTick(() => {
@@ -184,12 +992,34 @@ export default {
       this.$refs.wrapper.getBoundingClientRect().top
 			
 			let w = document.body.clientWidth > 750 ? 750 : document.body.clientWidth
+			
 		  document.getElementsByClassName('mint-swipe')[0].style.height = w*310/614 + 'px'
+			
+			this.$refs.portnav.style.left = document.body.clientWidth > 750 ? (document.body.clientWidth - 750)/2 + 10 + 'px' : '10px'
+			
+			window.addEventListener('scroll', this.handleScroll, true)
     })
   },
 	methods: {
 		go(url) {
 			this.$router.push(url)
+		},
+		handleScroll () {
+			let st = document.body.scrollTop
+			if(document.getElementsByClassName('tab-nav')[0] != undefined) {
+				if(st > 530) {
+					document.getElementsByClassName('tab-nav')[0].style.position = 'fixed'
+					document.getElementsByClassName('tab-nav')[0].style.left = document.body.clientWidth > 750 ? (document.body.clientWidth - 750)/2 + 'px' : '0'
+					document.getElementsByClassName('tab-nav')[0].style.top = '60px'
+
+					document.getElementsByClassName('good-header')[0].style.position = 'fixed'
+					document.getElementsByClassName('good-header')[0].style.left = document.body.clientWidth > 750 ? (document.body.clientWidth - 750)/2 + 'px' : '0'
+					document.getElementsByClassName('good-header')[0].style.top = '100px'
+				}else{
+					document.getElementsByClassName('tab-nav')[0].style.position = 'inherit'
+					document.getElementsByClassName('good-header')[0].style.position = 'inherit'
+				}
+			}
 		},
 		index(page) {
 		},

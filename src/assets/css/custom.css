@@ -32,7 +32,7 @@ dd{
 }
 
 .tab-nav .mint-tab-item-label{
-	font-size: 14px;
+	font-size: 15px;
 }
 
 .pop-wrapper .mint-cell-wrapper{
@@ -117,4 +117,21 @@ dd{
 .shopcar-cell .mint-cell-wrapper{
 	background-image: none;
 }
-	
+
+.mint-radio-input:checked + .mint-radio-core,.mint-switch-input:checked + .mint-switch-core {
+  background-color: #e43a3d;
+  border-color: #e43a3d;
+}
+
+.mint-checkbox-input:checked + .mint-checkbox-core {
+	background-color: #e43a3d;
+  border-color: #e43a3d;
+}
+
+.result .mint-cell:last-child {
+	background-size: 0;
+}
+
+.result .mint-cell-wrapper {
+	background-position: bottom left;
+}
