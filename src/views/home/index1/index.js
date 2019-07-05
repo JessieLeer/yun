@@ -1,6 +1,7 @@
 import { Swipe, SwipeItem } from 'mint-ui'
 import vueSeamlessScroll from 'vue-seamless-scroll'
 import tabbar from '@/components/tabbar1/index.vue'
+import cportnav from '@/components/portnav/index.vue'
 import cshopcar from '@/components/shopcar/index.vue'
 
 export default {
@@ -10,34 +11,8 @@ export default {
 			shop: {
 				name: '红星美凯龙'
 			},
-			banners: [
-				{
-					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557812612473&di=c42118e41821b2e607131c2e643bdf6c&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F82%2F57%2F66%2F76c019124c13807e13e7ae5a67bf7e45.jpg',
-					url: '/login',
-				},
-				{
-					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557812612473&di=c42118e41821b2e607131c2e643bdf6c&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F82%2F57%2F66%2F76c019124c13807e13e7ae5a67bf7e45.jpg',
-					url: '/login',
-				},
-				{
-					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557812612473&di=c42118e41821b2e607131c2e643bdf6c&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F82%2F57%2F66%2F76c019124c13807e13e7ae5a67bf7e45.jpg',
-					url: '/login',
-				}
-			],
-			notices: [
-				{
-					id: '1',
-					title: '日本女神长泽雅美秀中文，'
-				},
-				{
-					id: '2',
-					title: '电视剧版 / 行儿的中二幻想 / HiGH&LOW-THE STORY OF S.W.O.R.D'
-				},
-				{
-					id: '3',
-					title: '洼田正孝新剧开播收视率喜人，本田翼首次穿上白大褂'
-				}
-			],
+			banners: [],
+			notices: [],
 			classOption: {
 				step: 0.2,
 				limitMoveNum: 2
@@ -68,7 +43,8 @@ export default {
 		SwipeItem,
 		vueSeamlessScroll,
 		tabbar,
-		cshopcar
+		cshopcar,
+		cportnav
 	},
 	computed: {
 		user() {
@@ -112,6 +88,8 @@ export default {
 	},
 	watch: {},
 	created() {
+		this.bannerIndex()
+		this.noticeIndex()
 		this.regularIndex()
 		this.index(1)
 	},
@@ -123,8 +101,6 @@ export default {
 			let w = document.body.clientWidth > 750 ? 750 : document.body.clientWidth
 			
 		  document.getElementsByClassName('mint-swipe')[0].style.height = w*310/614 + 'px'
-			
-			this.$refs.portnav.style.left = document.body.clientWidth > 750 ? (document.body.clientWidth - 750)/2 + 10 + 'px' : '10px'
 			
 			window.addEventListener('scroll', this.handleScroll, true)
     })
@@ -149,6 +125,16 @@ export default {
 					document.getElementsByClassName('good-header')[0].style.position = 'inherit'
 				}
 			}
+		},
+		bannerIndex() {
+			this.$http.get('/api/m/notice/findBannerByTenantId', {params: {tenantId: this.user.groupId}}).then((res) => {
+				this.banners = res.data.data
+			})
+		},
+		noticeIndex() {
+			this.$http.get('/api/m/notice/getAllNotice', {params: {tenantId: this.user.groupId}}).then((res) => {
+				this.notices = res.data.data
+			})
 		},
 		regularIndex() {
 			this.$http.get('/api/m/product/findProductHomeRecommend', {params: {tenantId: this.user.groupId, userId: this.user.id, start: 1, size: 15}}).then((res) => {

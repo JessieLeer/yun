@@ -12,17 +12,19 @@
 				<i class='f-fsn f-fs1'>分类</i>
 			</router-link>
 		</header>
-		<!--<mt-cell v-bind:title="shop.name" to='/company' class='shop-name bg-grey' is-link>-->
-		</mt-cell>
+		<!--<mt-cell v-bind:title="shop.name" to='/company' class='shop-name bg-grey' is-link>
+		</mt-cell>-->
 		<mt-swipe :auto="4000">
-			<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' >
-			  <img v-bind:src='item.image' width='100%' v-on:click='go(item.url)' class='banner' ref='banner0'>
+			<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index'>
+			  <a v-bind:href='item.url' target='_blank'>
+			    <img v-bind:src='item.photos' width='100%' class='banner' ref='banner0'>
+				</a>
 			</mt-swipe-item>
 		</mt-swipe>
 		<section class='notice'>
 		  <i class='notice-index f-fsn'>通知公告：</i>
 			<vue-seamless-scroll v-bind:data="notices" class='seamless-warp' v-bind:class-option="classOption">
-			  <router-link v-for='(item,index) in notices' v-bind:key='index' to='/' class='notice-item f-db'>
+			  <router-link v-for='(item,index) in notices' v-bind:key='index' v-bind:to='`/bulletin/show/${item.id}`' class='notice-item f-db'>
 				  {{item.title.substr(0,18)}}... 
 				</router-link>
 			</vue-seamless-scroll>
@@ -33,9 +35,6 @@
 		</mt-navbar>
 		<mt-tab-container v-model="current">
 			<mt-tab-container-item id="1">
-			  <!--<section class='active f-tac'>
-				  <img src='../../../assets/image/active.gif' width='80%'>
-				</section>-->
 				<div v-for='(item,index) in regulars' v-bind:key='index' class='mt-10'>
 					<div class='order-wrapper' v-on:click='go("/good/show/" + item.productId)'>
 						<section class='order-image'>
@@ -94,16 +93,7 @@
 		    </p>
 			</mt-tab-container-item>
 		</mt-tab-container>
-		<nav class='portnav' ref='portnav'>
-			<router-link to='/user/index'>
-			  <i class='iconfont'>&#xe60f;</i>
-			</router-link>
-			<router-link to='/shopcar' class='f-pr'>
-			  <i class='iconfont' style='border-right: none; font-size: 28px; top: 1px;'>&#xe605;</i>
-				<mt-badge type="error" size='small' class='badge'>10</mt-badge>
-			</router-link>
-		</nav>
-		
+		<cportnav></cportnav>
 		<cshopcar ref='cshopcar' v-bind:popupVisible='popupVisible' v-bind:selecteder='selected' v-bind:selectedLoter='selectedLot' v-bind:editingPricer='editingPrice' v-bind:totalCounter='totalCount' v-bind:totalPricer='totalPrice'></cshopcar>
 	</div>
 </template>

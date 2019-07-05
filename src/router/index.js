@@ -1,7 +1,8 @@
 import Vue from 'vue'
+import Store from '../store'
 import Router from 'vue-router'
-import Login from '@/views/user/login/index.vue'
 
+import Login from '@/views/user/login/index.vue'
 import User from '@/views/user/index.vue'
 import UserIndex from '@/views/user/index/index.vue'
 import UserIndex1 from '@/views/user/index1/index.vue'
@@ -27,11 +28,10 @@ import GoodShow from '@/views/home/good/show/index.vue'
 import GoodPromotion from '@/views/home/good/promotion/index.vue'
 import Bulletin from '@/views/home/bulletin/index/index.vue'
 import BulletinShow from '@/views/home/bulletin/show/index.vue'
-import Company from '@/views/buyer/home/company/index.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
 		{
 			path: '/login',
@@ -163,15 +163,19 @@ export default new Router({
 			component: Bulletin
 		},
 		{
-			path: '/bulletin/show',
+			path: '/bulletin/show/:id',
 			name: 'bulletinShow',
 			component: BulletinShow
-		},
-		
-		{
-			path: '/company',
-			name: 'company',
-			component: Company
-		},
+		}
   ]
 })
+
+router.beforeEach((to, from, next) => {
+	let noUserPaths = ['/login']
+	if(noUserPaths.indexOf(to.path) == -1 && Store.state.user.id == undefined) {
+		router.push({ name: 'login' })
+	}
+	next()
+})
+
+export default router

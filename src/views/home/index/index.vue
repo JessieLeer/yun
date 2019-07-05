@@ -15,7 +15,9 @@
 		<div class='g-header'>
 			<mt-swipe class='banner-wrapper' :auto="4000">
 				<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' class='f-tac'>
-					<img v-bind:src='item.image' width='100%' v-on:click='go(item.url)' class='banner' ref='banner0'>
+				  <a v-bind:href='item.url' target='_blank'>
+					  <img v-bind:src='item.photos' width='100%' class='banner' ref='banner0'>
+					</a>
 				</mt-swipe-item>
 			</mt-swipe>
 			<nav class='nav f-cb'>
@@ -40,7 +42,7 @@
 		<section class='notice'>
 		  <i class='notice-index f-fsn'>通知公告：</i>
 			<vue-seamless-scroll v-bind:data="notices" class='seamless-warp' v-bind:class-option="classOption">
-			  <router-link v-for='(item,index) in notices' v-bind:key='index' to='/' class='notice-item f-db'>
+			  <router-link v-for='(item,index) in notices' v-bind:key='index' v-bind:to='`/bulletin/show/${item.id}`' class='notice-item f-db'>
 				  {{item.title.substr(0,18)}}... 
 				</router-link>
 			</vue-seamless-scroll>

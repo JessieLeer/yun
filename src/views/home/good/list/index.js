@@ -1,4 +1,5 @@
 import { MessageBox } from 'mint-ui'
+import cportnav from '@/components/portnav/index.vue'
 import ccustomer from '@/components/customer/index.vue'
 import cshopcar from '@/components/shopcar/index.vue'
 
@@ -34,6 +35,7 @@ export default {
 		}
 	},
 	components: {
+		cportnav,
 		ccustomer,
 		cshopcar
 	},
@@ -66,7 +68,7 @@ export default {
       this.$refs.loadmore.onBottomLoaded()
 		},
 		
-		handleCusSelected(customer) {
+		handleCusSelected() {
 			this.$refs.cshopcar.edit(this.good)
 		}
 	}

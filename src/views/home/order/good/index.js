@@ -1,5 +1,6 @@
 import ccustomer from '@/components/customer/index.vue'
 import cshopcar from '@/components/shopcar/index.vue'
+import cportnav from '@/components/portnav/index.vue'
 
 export default {
 	name: 'orderGood',
@@ -56,7 +57,8 @@ export default {
 	},
 	components: {
 		ccustomer,
-		cshopcar
+		cshopcar,
+		cportnav
 	},
 	mounted() {
 		this.$nextTick(() => {

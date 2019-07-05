@@ -1,4 +1,5 @@
 import { popup } from 'mint-ui'
+import cportnav from '@/components/portnav/index.vue'
 import ccustomer from '@/components/customer/index.vue'
 import cshopcar from '@/components/shopcar/index.vue'
 
@@ -111,8 +112,6 @@ export default {
     this.$nextTick(() => {
       this.contentH = document.documentElement.clientHeight - 
       this.$refs.wrapper.getBoundingClientRect().top
-			
-			this.$refs.portnav.style.left = document.body.clientWidth > 750 ? (document.body.clientWidth - 750)/2 + 10 + 'px' : '10px'
     })
   },
 	created() {
@@ -177,6 +176,7 @@ export default {
 	},
 	components: {
 		popup,
+		cportnav,
 		ccustomer,
 		cshopcar
 	}

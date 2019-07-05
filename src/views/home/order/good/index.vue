@@ -42,18 +42,7 @@
 		    {{this.page.current == this.page.total ? '没有更多了' : '下拉加载更多'}}
 		  </p>
 		</div>	
-		<nav class='portnav'>
-		  <router-link to='/index'>
-			  <i class='iconfont'>&#xe60c;</i>
-			</router-link>
-			<router-link to='/user/index'>
-			  <i class='iconfont'>&#xe60f;</i>
-			</router-link>
-			<router-link to='/shopcar' class='f-pr'>
-			  <i class='iconfont' style='border-right: none; font-size: 28px; top: 1px;'>&#xe605;</i>
-				<mt-badge type="error" size='small' class='badge' v-if='shopcars.length > 0'>{{shopcars.length}}</mt-badge>
-			</router-link>
-		</nav>
+		<cportnav></cportnav>
 		<ccustomer ref='ccustomer' v-bind:cusVisibler='cusVisible' v-on:handleCusSelected='handleCusSelected'></ccustomer>
 		<cshopcar ref='cshopcar' v-bind:popupVisible='popupVisible' v-bind:selecteder='selected' v-bind:selectedLoter='selectedLot' v-bind:editingPricer='editingPrice' v-bind:totalCounter='totalCount' v-bind:totalPricer='totalPrice'></cshopcar>
 	</div>	

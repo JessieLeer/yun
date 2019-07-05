@@ -99,15 +99,7 @@
 		
 		<cshopcar ref='cshopcar' v-bind:popupVisible='popupVisible' v-bind:selecteder='selected' v-bind:selectedLoter='selectedLot' v-bind:editingPricer='editingPrice' v-bind:totalCounter='totalCount' v-bind:totalPricer='totalPrice'></cshopcar>
 		
-		<nav class='portnav' ref='portnav'>
-			<router-link to='/user/index'>
-			  <i class='iconfont'>&#xe634;</i>
-			</router-link>
-			<router-link to='/shopcar' class='f-pr'>
-			  <i class='iconfont' style='border-right: none'>&#xe605;</i>
-				<mt-badge v-if='shopcar.length > 0' type="error" size='small' class='badge'>{{shopcar.length}}</mt-badge>
-			</router-link>
-		</nav>
+		<cportnav></cportnav>
 	</div>
 </template>
 
