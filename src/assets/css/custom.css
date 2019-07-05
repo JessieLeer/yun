@@ -135,3 +135,8 @@ dd{
 .result .mint-cell-wrapper {
 	background-position: bottom left;
 }
+
+.search-gooder .mint-search-list-warp{
+	margin-top: 12px;
+}
+	

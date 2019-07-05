@@ -1,5 +1,5 @@
 <template>
-  <mt-popup v-model="popupVisible" position="bottom" v-bind:closeOnClickModal='false' class='popup'>
+  <mt-popup v-model="popVisable" position="bottom" v-bind:closeOnClickModal='false' class='popup'>
 		<div class='pop-wrapper f-fs2'>
 			<mt-cell class='good-cell' v-bind:value="'核算价:' + selected.dbdj">
 				<h4 slot='title' class='medicine-name'>{{selected.name}}</h4>
@@ -44,3 +44,10 @@
 		</footer>
 	</mt-popup>
 </template>
+
+<style lang='stylus' scoped>
+@import '~@/assets/css/mixin.styl'
+@import './index.styl'
+</style>
+
+<script src='./index'></script>

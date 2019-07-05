@@ -7,34 +7,7 @@ export default {
 			search: {
 				name: '',
 				result: [
-					{
-						name: '苹果6s plus',
-						badges: [
-							'5.5寸屏幕',
-							'国行正版'
-						]
-					},
-					{
-						name: '苹果6s plus',
-						badges: [
-							'5.5寸屏幕',
-							'国行正版'
-						]
-					},
-					{
-						name: '苹果6s plus',
-						badges: [
-							'5.5寸屏幕',
-							'国行正版'
-						]
-					},
-					{
-						name: '苹果6s plus',
-						badges: [
-							'5.5寸屏幕',
-							'国行正版'
-						]
-					},
+					
 				]
 			},
 			histories: [

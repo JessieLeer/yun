@@ -4,7 +4,7 @@
 			<i class='iconfont' slot='icon'>&#xe60c;</i>
 			首页
 		</mt-tab-item>
-		<mt-tab-item id="/order">
+		<mt-tab-item id="/order/good/none">
 			<i class='iconfont' slot='icon'>&#xe60d;</i>
 			快速下单
 		</mt-tab-item>

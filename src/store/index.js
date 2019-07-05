@@ -5,6 +5,7 @@ import VueXAlong from 'vuex-along'
 import config from './modules/config'
 import user from './modules/user'
 import shopcar from './modules/shopcar'
+import customer from './modules/customer'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ export default new Vuex.Store({
   modules: {
 		config,
     user,
-		shopcar
+		shopcar,
+		customer
   },
 	
 	plugins: [

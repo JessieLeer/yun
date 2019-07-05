@@ -1,50 +1,38 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/saler/user/login/index.vue'
+import Login from '@/views/user/login/index.vue'
 
-/** 业务员端 **/
-import User from '@/views/saler/user/index.vue'
-import UserIndex from '@/views/saler/user/index/index.vue'
-import UserInfo from '@/views/saler/user/info/index.vue'
-import UserSetting from '@/views/saler/user/setting/index/index.vue'
-import UserPassword from '@/views/saler/user/setting/password/index.vue'
-import UserAccount from '@/views/saler/user/account/index.vue'
-import UserOrder from '@/views/saler/user/order/index/index.vue'
-import UserOrderSearch from '@/views/saler/user/order/search/index.vue'
-import UserOrderShow from '@/views/saler/user/order/show/index.vue'
-import UserCustomer from '@/views/saler/user/customer/index.vue'
-import Shopcar from '@/views/saler/home/shopcar/index/index.vue'
-import ShopcaResult from '@/views/saler/home/shopcar/result/index.vue'
-import Order from '@/views/saler/home/order/customer/index.vue'
-import OrderGood from  '@/views/saler/home/order/good/index.vue'
-import Index from '@/views/saler/home/index/index.vue'
-import GoodCate from '@/views/saler/home/good/cate/index.vue'
-import GoodList from '@/views/saler/home/good/list/index.vue'
-import GoodShow from '@/views/saler/home/good/show/index.vue'
-import GoodPromotion from '@/views/saler/home/good/promotion/index.vue'
-import Bulletin from '@/views/saler/home/bulletin/index/index.vue'
-import BulletinShow from '@/views/saler/home/bulletin/show/index.vue'
-
-/** 采购商端 **/
-import User1 from '@/views/buyer/user/index.vue'
-import User1Index from '@/views/buyer/user/index/index.vue'
-import User1Order from '@/views/buyer/user/order/search/index.vue'
-import User1Info from '@/views/buyer/user/info/index.vue'
-import User1Setting from '@/views/buyer/user/setting/index/index.vue'
-import User1Password from '@/views/buyer/user/setting/password/index.vue'
-import Index1 from '@/views/buyer/home/index/index.vue'
-import Shopcar1 from '@/views/buyer/home/shopcar/index/index.vue'
-import GoodCate1 from '@/views/buyer/home/good/cate/index.vue'
-import GoodShow1 from '@/views/buyer/home/good/show/index.vue'
-import Search1 from '@/views/buyer/home/search/index/index.vue'
-import Search1Result from '@/views/buyer/home/search/result/index.vue'
+import User from '@/views/user/index.vue'
+import UserIndex from '@/views/user/index/index.vue'
+import UserIndex1 from '@/views/user/index1/index.vue'
+import UserInfo from '@/views/user/info/index.vue'
+import UserSetting from '@/views/user/setting/index/index.vue'
+import UserPassword from '@/views/user/setting/password/index.vue'
+import UserAccount from '@/views/user/account/index.vue'
+import UserOrder from '@/views/user/order/index/index.vue'
+import UserOrderSearch from '@/views/user/order/search/index.vue'
+import UserOrderShow from '@/views/user/order/show/index.vue'
+import UserCustomer from '@/views/user/customer/index.vue'
+import Shopcar from '@/views/home/shopcar/index/index.vue'
+import ShopcaResult from '@/views/home/shopcar/result/index.vue'
+import Order from '@/views/home/order/customer/index.vue'
+import OrderGood from  '@/views/home/order/good/index.vue'
+import Index from '@/views/home/index/index.vue'
+import Index1 from '@/views/home/index1/index.vue'
+import GoodSearch from '@/views/home/good/search/index/index.vue'
+import SearchResult from '@/views/home/good/search/result/index.vue'
+import GoodCate from '@/views/home/good/cate/index.vue'
+import GoodList from '@/views/home/good/list/index.vue'
+import GoodShow from '@/views/home/good/show/index.vue'
+import GoodPromotion from '@/views/home/good/promotion/index.vue'
+import Bulletin from '@/views/home/bulletin/index/index.vue'
+import BulletinShow from '@/views/home/bulletin/show/index.vue'
 import Company from '@/views/buyer/home/company/index.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-		/** 业务员端 **/
 		{
 			path: '/login',
 			name: 'login',
@@ -59,6 +47,11 @@ export default new Router({
           path: 'index',
 					name: 'userIndex',
           component: UserIndex
+        },
+				{
+          path: 'index1',
+					name: 'userIndex1',
+          component: UserIndex1
         },
         {
           path: 'info',
@@ -91,7 +84,7 @@ export default new Router({
 					component: UserOrderSearch
 				},
 				{
-					path: 'order/show',
+					path: 'order/show/:id',
 					name: 'userOrderShow',
 					component: UserOrderShow
 				},
@@ -108,7 +101,7 @@ export default new Router({
 			component: Shopcar
 		},
 		{
-			path: '/shopcar/result',
+			path: '/shopcar/result/:amount',
 			name: 'shopcaResult',
 			component: ShopcaResult
 		},
@@ -118,19 +111,36 @@ export default new Router({
 			component: Order
 		},
 		{
-			path: '/order/good',
+			path: '/order/good/:keyword',
 			name: 'orderGood',
 			component: OrderGood
 		},
+		/*-- 业务员首页 --*/
 		{
 			path: '/index',
 			name: 'index',
 			component: Index
 		},
+		/*-- 采购商首页 --*/
+		{
+			path: '/index1',
+			name: 'index1',
+			component: Index1
+		},
 		{
 			path: '/good/cate',
 			name: 'goodCate',
 			component: GoodCate
+		},
+		{
+			path: '/good/search',
+			name: 'goodSearch',
+			component: GoodSearch
+		},
+		{
+			path: '/good/search/result/:keyword',
+			name: 'searchResult',
+			component: SearchResult
 		},
 		{
 			path: '/good/list',
@@ -158,73 +168,10 @@ export default new Router({
 			component: BulletinShow
 		},
 		
-		/** 采购商端 **/
-		{
-			path: '/user1',
-			name: 'user1',
-			component: User1,
-      children: [
-				{
-          path: 'index',
-					name: 'user1Index',
-          component: User1Index
-        },
-				{
-					path: 'order',
-					name: 'user1Order',
-					component: User1Order
-				},
-				{
-					path: 'info',
-					name: 'user1Info',
-          component: User1Info
-				},
-				{
-					path: 'setting',
-					name: 'user1Setting',
-					component: User1Setting
-				},
-				{
-					path: 'password',
-					name: 'user1Password',
-					component: User1Password
-				},
-			]
-		},
-		{
-			path: '/index1',
-			name: 'index1',
-			component: Index1
-		},
 		{
 			path: '/company',
 			name: 'company',
 			component: Company
 		},
-		{
-			path: '/shopcar1',
-			name: 'shopcar1',
-			component: Shopcar1
-		},
-		{
-			path: '/good/cate1',
-			name: 'goodCate1',
-			component: GoodCate1
-		},
-		{
-			path: '/good/show1',
-			name: 'goodShow1',
-			component: GoodShow1
-		},
-		{
-			path: '/search1',
-			name: 'search1',
-			component: Search1
-		},
-		{
-			path: '/search1/result',
-			name: 'search1Result',
-			component: Search1Result
-		}
   ]
 })

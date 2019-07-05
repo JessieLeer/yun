@@ -1,34 +1,65 @@
+import { Toast } from 'mint-ui'
+
 export default {
 	name: 'cshopcar',
 	props: {
-		selected: {
+		popupVisible: {
+			type: Boolean,
+			default: false
+		},
+		selecteder: {
 			type: Object,
 			default: {
 				lotnums: []
 			}
 		},
-		selectedLot: {
+		selectedLoter: {
 			type: Object
 		},
-		editingPrice: {
+		editingPricer: {
 			type: String,
 			default: ''
 		},
-		totalCount: {
+		totalCounter: {
 			type: Number,
 			default: 0
 		},
-		totalPrice: {
+		totalPricer: {
 			type: Number,
 			default: 0
+		}
+	},
+	
+	data() {
+		return {
+			popVisable: this.popupVisible,
+			selected: this.selecteder,
+			selectedLot: this.selectedLoter,
+			editingPrice: this.editingPricer,
+			totalCount: this.totalCounter,
+			totalPrice: this.totalPricer
+		}
+	},
+	computed: {
+		user() {
+			return this.$store.state.user
+		},
+		customer() {
+			return this.$store.state.shopcar.customer
+		},
+		pricePlaceholder() {
+			return this.selectedLot.pihao ? `¥${this.selectedLot.price}（可修改销售单价）` : '选择批号即可修改价格'
+		},
+		priceUnsubable() {
+			return isNaN(parseFloat(this.editingPrice)) ? true : false
 		}
 	},
 	methods: {
 		edit(item) {
 			/*--获取该商品的批号--*/
-			this.$http.get('/api/m/product/findProductPihao', {params: {productId: item.id, tenantId: this.user.groupId, userId: this.user.id}}).then((res) => {
+			this.$http.get('/api/m/product/findProductPihao', {params: {productId: item.id, tenantId: this.user.groupId, userId: this.user.id, customerId: this.customer.customerId}}).then((res) => {
 				item.lotnums = res.data.data
-				this.popupVisible = true
+				this.popVisable = true
 				this.selected = item
 				this.$set(this.selected, 'totalSelected', 0)
 				let lotPrices = this.selected.lotnums.map((item) => {
@@ -40,7 +71,8 @@ export default {
 				]
 				this.selected.dbdj = `${min}~${max}`
 				for(let item of this.selected.lotnums){
-					this.selected.price += item.count * item.price
+					this.totalCount += item.count
+					this.totalPrice += item.count * item.price
 				}
 			})
 		},
@@ -82,33 +114,48 @@ export default {
 			}
 		},
 		closePop() {
-			this.popupVisible = false
-			window.location.reload()
+			this.popVisable = false
 		},
 		/*-- 加入购物车 --*/
 		shopcarAdd(good) {
 			let lotnums = []
 			for(let item of this.selected.lotnums) {
 				lotnums.push({
+					accountingPrice: item.dbdj,
 					count: item.count,
+					customerId: this.customer.customerId,
 					pihao: item.pihao,
-					price: item.price
+					price: item.price,
+					productId: this.selected.id,
+					hw: item.hw,
+			  	hz: item.hz,
 				})
 			}
 			let form = {
+				chpgg: this.selected.chpgg,
+				customerId: this.customer.customerId,
+				groupdId: this.user.groupId,
+				photos: this.selected.photos,
 				categoryId: this.selected.categoryId,
 				code: this.selected.code,
 				groupId: this.user.groupId,
-				hw: this.selected.hw,
-				hz: this.selected.hz,
 				jyfw: this.selected.jyfw,
 				name: this.selected.name,
 				productId: this.selected.id,
 				userId: this.user.id,
+				shchchj: this.selected.shchchj,
 				pihaoVO: lotnums
 			}
 			this.$http.post('/api/m/shopping/saveShoppingCart', form).then((res) => {
-				console.log(res)
+				Toast({
+					message: res.data.message
+				})
+				if(res.data.code == 'success') {
+					this.popVisable = false
+					window.setTimeout(() => {
+						window.location.reload()
+					},1000)
+				}
 			})
 		}
 	}

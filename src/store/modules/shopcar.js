@@ -3,7 +3,8 @@ import axios from 'axios'
 
 // initial state
 const state = {
-	shopcar: []
+	data: [],
+	customer: {}
 }
 
 // getters
@@ -12,18 +13,16 @@ const getters = {
 
 // actions
 const actions = {
-	shopcarIndex({commit,rootState},context) {
-		axios.get('/api/m/shopping/getShoppingCartByUser', {params: {userId: rootState.user.id}}).then((res) => {
-			commit('shopcarIndex',res.data.data)
-		})
-	}
 }
 
 // mutations
 const mutations = {
-	shopcarIndex(state,shopcar) {
-		state.shopcar = shopcar
+	cusChose(state,customer) {
+		state.customer = customer
 	},
+	shopcarCusClear(state) {
+		state.customer = {}
+	}
 }
 
 export default {

@@ -4,11 +4,11 @@
 			<i class='iconfont' slot='icon'>&#xe60c;</i>
 			进入厂商
 		</mt-tab-item>
-		<mt-tab-item id="/shopcar1">
+		<mt-tab-item id="/shopcar">
 			<i class='iconfont' slot='icon'>&#xe60e;</i>
 			购物车
 		</mt-tab-item>
-		<mt-tab-item id="/user1/index">
+		<mt-tab-item id="/user/index1">
 		  <i class='iconfont' slot='icon'>&#xe60f;</i>
 			我的
 		</mt-tab-item>
