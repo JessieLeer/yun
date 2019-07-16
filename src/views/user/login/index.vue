@@ -13,7 +13,7 @@
 			  <i class='iconfont'>&#xe601;</i>
 			</mt-field>
 			<br><br><br>
-			<mt-button type="danger" size='large' class='sub' v-bind:disabled='isSubable' v-on:click='login'>登录</mt-button>
+			<button type='button' @click='loginer' class='sub' v-bind:disabled='isSubable'>登录</button>
 		</form>
 	</div>
 </template>

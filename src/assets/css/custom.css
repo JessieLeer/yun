@@ -139,4 +139,12 @@ dd{
 .search-gooder .mint-search-list-warp{
 	margin-top: 12px;
 }
-	
+
+.mint-toast{
+	z-index: 2001;
+}
+
+.mint-searchbar-cancel{
+	display: none;
+}
+

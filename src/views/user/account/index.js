@@ -13,7 +13,7 @@ export default {
       ],
 			search: {
 				type: '全部',
-				month: '2019-06-09'
+				month: ''
 			},
 			rechargeTotal: 0,
 			deductionTotal: 0,
@@ -38,17 +38,26 @@ export default {
 			return this.msToDate(this.search.month).month
 		}
 	},
+	created() {
+		this.initDate()
+	},
 	mounted() {
     this.$nextTick(() => {
       this.contentH = document.documentElement.clientHeight - 
       this.$refs.wrapper.getBoundingClientRect().top
-			
 			this.index(1)
     })
   },
-	created() {
-	},
 	methods: {
+		initDate() {
+			let now = new Date()
+			let year = now.getFullYear()
+			let month = now.getUTCMonth() + 1 + ''
+			let day = now.getUTCDate() + ''
+			let strmonth = month.length == 1 ? '0' + month : month
+			let strday = day.length == 1 ? '0' + day : day
+			this.search.month = year + '-'  +  strmonth + '-' + strday
+		},
     onValuesChange(picker, values) {
 			this.type = values[0]
     },

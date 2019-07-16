@@ -14,7 +14,7 @@
 			¥<b class='account'>{{balance}}</b>
 		</mt-cell>
 		<div class='f-cb'>
-			<section class='w-50 f-fl'>
+			<section class='w-60 f-fl'>
 				<mt-button class='btn' v-on:click='typePickerShow = true'>
 					{{search.type}}
 					<i class='iconfont dropdown'>&#xe632;</i>
@@ -24,7 +24,7 @@
 					<i class='iconfont dropdown'>&#xe632;</i>
 				</mt-button>
 			</section>
-			<section class='count w-50 f-fs2 f-fr f-tar' v-bind:style='search.type == "全部" ? "line-height: 16px" : "line-height: 32px"'>
+			<section class='count w-40 f-fs2 f-fr f-tar' v-bind:style='search.type == "全部" ? "line-height: 16px" : "line-height: 32px"'>
 				<dl class='' v-if='search.type != "扣款"'>
 					<dt class='f-ib'>充值</dt>
 					<dd class='f-ib'>¥{{rechargeTotal}}</dd>
@@ -35,6 +35,7 @@
 				</dl>
 			</section>
 		</div>
+		<p class='f-tac' v-if='bills.length == 0'>当前条件下没有资金流水记录</p>
 		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
 			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
 				<mt-cell v-for='(item,index) in bills' v-bind:key='index' v-bind:title="item.type + '类型：' + item.conType" v-bind:label="item.time" class='user-account f-pr pt-30'>

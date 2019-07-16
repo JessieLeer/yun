@@ -5,8 +5,8 @@
 				<i class='iconfont ml-10'>&#xe625;</i>
 			</router-link>
 		</mt-header>
-		<mt-cell title="下单成功，正在等待总部审核"></mt-cell>
-		<mt-cell is-link class='customer'>
+		<mt-cell v-bind:title="notice"></mt-cell>
+		<mt-cell class='customer'>
 		  <i class='f-fsn f-fs2' slot='title'>客户名称：{{order.customerName}}</i>
 		</mt-cell>
 		<mt-cell title='订单信息'></mt-cell>

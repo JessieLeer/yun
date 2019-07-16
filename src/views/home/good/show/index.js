@@ -9,25 +9,10 @@ export default {
 	},
 	data() {
 		return {
-			banners: [
-				{
-					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557812612473&di=c42118e41821b2e607131c2e643bdf6c&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F82%2F57%2F66%2F76c019124c13807e13e7ae5a67bf7e45.jpg',
-					url: '/login',
-				},
-				{
-					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557812612473&di=c42118e41821b2e607131c2e643bdf6c&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F82%2F57%2F66%2F76c019124c13807e13e7ae5a67bf7e45.jpg',
-					url: '/login',
-				},
-				{
-					image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557812612473&di=c42118e41821b2e607131c2e643bdf6c&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F82%2F57%2F66%2F76c019124c13807e13e7ae5a67bf7e45.jpg',
-					url: '/login',
-				}
-			],
 			good: {},
 			activited: '1',
 			cusVisible: false,
 			popupVisible: false,
-			shopcar: [],
 			selected: {
 				lotnums: [
 				]
@@ -44,6 +29,9 @@ export default {
 		},
 		currentCustomer() {
 			return this.$store.state.shopcar.customer
+		},
+		shopcar() {
+			return this.$store.state.shopcar.data
 		}
 	}, 
 	mounted() {
@@ -52,7 +40,6 @@ export default {
 	},
 	created() {
 		this.show()
-		this.shopcarIndex()
 	},
 	components: {
 		Swipe,
@@ -72,21 +59,17 @@ export default {
 				this.good = res.data.data.product
 			})
 		},
-		shopcarIndex() {
-			if(this.currentCustomer.customerId) {
-				this.$http.get('/api/m/shopping/getShoppingCartByUser', {params: {
-					customerId: this.currentCustomer.customerId,
-					userId: this.user.id
-				}}).then((res) => {
-					this.shopcar = res.data.data
-				})
-			}
-		},
 		showCus() {
-			if(this.currentCustomer.customerId || this.user.customerType  == 1) {
-				this.handleCusSelected()
+			if(this.good.stock == 0) {
+				Toast({
+					message: '该产品库存为零'
+				})
 			}else{
-				this.$refs.ccustomer.cusShow()
+				if(this.currentCustomer.customerId || this.user.customerType  == 1) {
+					this.handleCusSelected()
+				}else{
+					this.$refs.ccustomer.cusShow()
+				}
 			}
 		},
 		handleCusSelected() {

@@ -1,3 +1,5 @@
+import { MessageBox } from 'mint-ui'
+import csearch from '@/components/search/index.vue'
 import ccustomer from '@/components/customer/index.vue'
 import cshopcar from '@/components/shopcar/index.vue'
 import cportnav from '@/components/portnav/index.vue'
@@ -42,20 +44,9 @@ export default {
 		},
 	},
 	watch: {
-		'search.name'(newValue, oldValue) {
-			this.$http.get('/api/m/product/findProductBySearchKey', {params: {key: newValue, tenantId: this.user.groupId, userId: this.user.id}}).then((res) => {
-				this.search.results = res.data.data
-			})
-		}, 
-		'search.results'(newVal, oldValue) {
-			if(newVal.length > 0) {
-				document.getElementsByClassName('mint-search')[0].style.height = '100vh'
-			}else{
-				document.getElementsByClassName('mint-search')[0].style.height = 'auto'
-			}
-		} 
 	},
 	components: {
+		csearch,
 		ccustomer,
 		cshopcar,
 		cportnav
@@ -71,7 +62,21 @@ export default {
 	},
 	methods: {
 		back() {
-			this.$router.back()
+			MessageBox({
+				title: '',
+				message: `您是否继续为${this.currentCustomer.customerName}客户进行下单?`,
+				showCancelButton: true,
+				cancelButtonText: '否',
+				confirmButtonText: '是'
+			}).then((action) => {
+				if(action == 'confirm') {
+				}else{
+					this.$store.commit('shopcarClear')
+					this.$store.commit('shopcarCusClear')
+		    	this.$router.push('/customer')
+					window.location.reload()
+				}
+			})
 		},
 		go(url) {
 			this.$router.push(url)
@@ -81,6 +86,7 @@ export default {
 				/*-- 获取购物车列表 --*/
 				this.$http.get('/api/m/shopping/getShoppingCartByUser', {params: {
 				customerId: this.currentCustomer.customerId,
+					tenantId: this.user.groupId,
 					userId: this.user.id
 				}}).then((res) => {
 					this.shopcars = res.data.data
@@ -99,10 +105,6 @@ export default {
 					})
 				}
 			}
-		},
-		searcher() {
-			this.$router.push(`/order/good/${this.search.name}`)
-			window.location.reload()
 		},
 		loadTop() {
 			//重置分页为1

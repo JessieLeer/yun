@@ -36,9 +36,10 @@ export default {
 		firstIndex() {
 			this.$http.get('/api/m/product/findProductCategorysFirst', {params: {tenantId: this.user.groupId}}).then((res) => {
 				this.cate.firsts = res.data.data
+				this.changeCate(this.cate.firsts[0].id)
 			})
 		},
-		/*-- 获取二级分类及商品 --*/
+		/*-- 获取二级分类及三级分类 --*/
 		changeCate(cate) {
 			this.curcate = cate
 			this.$http.get('/api/m/product/findProductCategorys', {params: {id: cate}}).then((res) => {

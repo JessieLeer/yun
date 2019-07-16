@@ -1,5 +1,5 @@
 <template>
-  <nav class='portnav' ref='portnav'>
+  <nav class='portnav' ref='portnav' v-bind:style='"z-index:" + zIndex' v-show="hidshow">
 		<router-link to='/index' v-if='user.customerType == 3'>
 			<i class='iconfont'>&#xe60c;</i>
 	  </router-link>

@@ -6,7 +6,7 @@
 			</router-link>
 		</mt-header>
 		<div v-for='(item,index) in customers' v-bind:key='index' class='customer'>
-		  <mt-cell v-bind:title="item.name"></mt-cell>
+		  <mt-cell v-bind:title="item.customerName"></mt-cell>
 			<dl class='info'>
 			  <dt class='f-ib f-tar'>联系电话：</dt>
 				<dd class='f-ib'>{{item.phone}}</dd>
@@ -22,13 +22,13 @@
 			<dl class='info'>
 			  <dt class='f-ib f-tar'>营业执照：</dt>
 				<dd class='f-ib f-vat'>
-				  {{item.bussiness}}
+				  {{item.businessLicense}}
 				</dd>
 			</dl>
 			<dl class='info'>
 			  <dt class='f-ib f-tar'>委托书：</dt>
 				<dd class='f-ib f-vat'>
-				  {{item.bussiness}}
+				  {{item.powerOfAttorney}}
 				</dd>
 			</dl>
 			<dl class='info'>

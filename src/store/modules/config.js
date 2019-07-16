@@ -3,7 +3,8 @@ import axios from 'axios'
 
 // initial state
 const state = {
-	serverUrl: ''
+	serverUrl: 'http://xt.ysk360.com:8086',
+	tenantId: ''
 }
 
 // getters
@@ -17,7 +18,9 @@ const actions = {
 
 // mutations
 const mutations = {
-	
+	tenantShow(state,tenantId) {
+		state.tenantId = tenantId
+	},
 }
 
 export default {

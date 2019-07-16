@@ -6,6 +6,7 @@ export default {
 	name: 'index',
 	data() {
 		return {
+			serverUrl: this.$store.state.config.serverUrl,
 			banners: [],
 			notices: [],
 			classOption: {
@@ -18,6 +19,7 @@ export default {
 				total: 1
 			},
 			contentH: 0,
+			moreshow: false
 		}
 	},
 	computed: {
@@ -44,30 +46,45 @@ export default {
     })
 	},
 	created() {
-		this.bannerIndex()
-		this.noticeIndex()
-		this.hotIndex(1)
+		this.tenantShow()
 	},
 	methods: {
 		go(url) {
 			this.$router.push(url)
 		},
-		bannerIndex() {
-			this.$http.get('/api/m/notice/findBannerByTenantId', {params: {tenantId: this.user.groupId}}).then((res) => {
+		tenantShow() {
+			let url = window.location.href
+			this.$http.get('/api/m/user/findTenantId', {params: {url: url}}).then((res) => {
+				this.$store.commit('tenantShow')
+				this.bannerIndex(res.data.data)
+		    this.noticeIndex(res.data.data)
+				this.hotIndex(1,res.data.data)
+			})
+		},
+		bannerIndex(tenantId) {
+			this.$http.get('/api/m/notice/findBannerByTenantId', {params: {tenantId: tenantId}}).then((res) => {
 				this.banners = res.data.data
 			})
 		},
-		noticeIndex() {
-			this.$http.get('/api/m/notice/getAllNotice', {params: {tenantId: this.user.groupId}}).then((res) => {
+		noticeIndex(tenantId) {
+			this.$http.get('/api/m/notice/getAllNotice', {params: {tenantId: tenantId}}).then((res) => {
 				this.notices = res.data.data
 			})
 		},
 		/* 获取热销产品 */
-		hotIndex(page) {
-			this.$http.get('/api/m/product/findProductsBySalesDesc', {params: {tenantId: this.user.groupId, userId: this.user.id, start: page, size: 10}}).then((res) => {
-				this.hots = this.hots.concat(res.data.data)
-				this.page.total = Math.ceil(res.data.totalSize/10)
-			})
+		hotIndex(page,tenantId) {
+			if(this.user.id) {
+				this.$http.get('/api/m/product/findProductsBySalesDesc', {params: {tenantId: this.user.groupId, userId: this.user.id, start: page, size: 10}}).then((res) => {
+					this.hots = this.hots.concat(res.data.data)
+					this.page.total = Math.ceil(res.data.totalSize/20)
+				})
+			}else{
+				this.$http.get('/api/m/product/findProductByTenantId', {params: {tenantId: tenantId, start: page, size: 10}}).then((res) => {
+					this.hots = this.hots.concat(res.data.data)
+					this.page.total = Math.ceil(res.data.totalSize/20)
+				})
+			}
+			
 		},
 		loadTop() {
 			//重置分页为1

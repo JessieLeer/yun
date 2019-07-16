@@ -1,9 +1,7 @@
 <template>
   <div class='inner-main'>
 	  <mt-header title="设置" class='header'>
-		  <router-link to="/user/index" slot="left">
-				<mt-button icon="back"></mt-button>
-			</router-link>
+		  <mt-button icon="back" slot="left" v-on:click='back'></mt-button>
 		</mt-header>
 		<mt-cell title="修改密码" is-link to='/user/password'></mt-cell>
 		<section class='f-tac'>

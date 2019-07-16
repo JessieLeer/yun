@@ -8,6 +8,7 @@ export default {
 	name: 'index1',
 	data() {
 		return {
+			serverUrl: this.$store.state.config.serverUrl,
 			shop: {
 				name: '红星美凯龙'
 			},
@@ -36,6 +37,7 @@ export default {
 			},
 			selectedLot: {},
 			editingPrice: '',
+			tenantId: ''
 		}
 	},
 	components: {
@@ -88,10 +90,7 @@ export default {
 	},
 	watch: {},
 	created() {
-		this.bannerIndex()
-		this.noticeIndex()
-		this.regularIndex()
-		this.index(1)
+		this.tenantShow()
 	},
 	mounted() {
     this.$nextTick(() => {
@@ -126,41 +125,67 @@ export default {
 				}
 			}
 		},
-		bannerIndex() {
-			this.$http.get('/api/m/notice/findBannerByTenantId', {params: {tenantId: this.user.groupId}}).then((res) => {
+		tenantShow() {
+			let url = window.location.href
+			this.$http.get('/api/m/user/findTenantId', {params: {url: url}}).then((res) => {
+				this.$store.commit('tenantShow',res.data.data)
+				this.bannerIndex(res.data.data)
+		    this.noticeIndex(res.data.data)
+				this.regularIndex(res.data.data)
+				this.index(1,res.data.data)
+			})
+		},
+		bannerIndex(tenantId) {
+			this.$http.get('/api/m/notice/findBannerByTenantId', {params: {tenantId: tenantId}}).then((res) => {
 				this.banners = res.data.data
 			})
 		},
-		noticeIndex() {
-			this.$http.get('/api/m/notice/getAllNotice', {params: {tenantId: this.user.groupId}}).then((res) => {
+		noticeIndex(tenantId) {
+			this.$http.get('/api/m/notice/getAllNotice', {params: {tenantId: tenantId}}).then((res) => {
 				this.notices = res.data.data
 			})
 		},
-		regularIndex() {
-			this.$http.get('/api/m/product/findProductHomeRecommend', {params: {tenantId: this.user.groupId, userId: this.user.id, start: 1, size: 15}}).then((res) => {
-				this.regulars = res.data.data
-			})
+		regularIndex(tenantId) {
+			if(this.user.id) {
+				this.$http.get('/api/m/product/findProductsBySalesDesc', {params: {tenantId: tenantId, userId: this.user.id, start: 1, size: 20}}).then((res) => {
+					this.regulars = res.data.data
+					console.log(res.data.data)
+				})
+			}else{
+				this.$http.get('/api/m/product/findProductsBySalesDesc', {params: {tenantId: tenantId, start: 1, size: 20}}).then((res) => {
+					this.regulars = res.data.data
+				})
+			} 
+			
 		},
-		index(page) {
-			this.$http.get(this.goodUrl, {params: {userId: this.user.id, tenantId: this.user.groupId, start: page, size: 10}}).then((res) => {
-				this.good.data = this.good.data.concat(res.data.data)
-				this.good.total = res.data.totalSize
-				this.page.total = Math.ceil(res.data.totalSize/10)
-			})
+		index(page,tenantId) {
+			if(this.user.id) {
+				this.$http.get(this.goodUrl, {params: {userId: this.user.id, tenantId: tenantId, start: page, size: 20}}).then((res) => {
+					this.good.data = this.good.data.concat(res.data.data)
+					this.good.total = res.data.totalSize
+					this.page.total = Math.ceil(res.data.totalSize/20)
+				})
+			}else{
+				this.$http.get('/api/m/product/findProductByTenantId', {params: {tenantId: tenantId, start: page, size: 20}}).then((res) => {
+					this.good.data = this.good.data.concat(res.data.data)
+					this.good.total = res.data.totalSize
+					this.page.total = Math.ceil(res.data.totalSize/20)
+				})
+			}
 		},
 		goodFilter() {
 			this.good.data = []
-			this.index(1)
+			this.index(1, this.$store.state.config.tenantId)
 		},
 		loadTop() {
 			//重置分页为1
 			this.page.current = 1
 			this.good.data = []
-			this.index(this.page.current)
+			this.index(this.page.current, this.$store.state.config.tenantId)
       this.$refs.loadmore.onTopLoaded()
     },
 		loadBottom() {
-			this.index(this.page.current+1)
+			this.index(this.page.current+1,this.$store.state.config.tenantId)
 			this.page.current ++
       this.$refs.loadmore.onBottomLoaded()
 		},

@@ -3,7 +3,9 @@
 	  <mt-header title="商品搜索" fixed class='header' style='z-index: 10'>
 			<mt-button icon="back" slot="left" v-on:click='back'></mt-button>
 		</mt-header>
-		<mt-search v-model="search.name" class='search' cancel-text="取消" placeholder="商品名称/助记码" @keyup.native.enter="searcher"></mt-search>
+		<form>
+		  <mt-search v-model="search.name" class='search' cancel-text="取消" placeholder="商品名称/助记码" @keyup.native.enter="searcher"></mt-search>
+		</form>
 		<div class='search-result-wrapper'>
 		  <mt-cell v-for="(item,index) in search.result" v-bind:key='index' v-bind:title="item.productName" is-link v-bind:to='`/good/show/${item.id}`'></mt-cell>
 		</div>
@@ -17,7 +19,7 @@
 			</section>
 			<section class='condition f-fl f-tac'>
 				<mt-button size='small' v-bind:class='search.store != "全部库存" ? "color-e43a3d" : ""' class='f-fs1' v-on:click='filterVisible1 = true'>
-				  {{search.store == '全部库存' ? search.store : `库存>${search.store}`}}
+				  {{search.store == '全部库存' ? search.store : `>${search.store}`}}
 				  <img src='../../../../../assets/image/dri.png' v-if='search.store == "全部库存"' class='triangle'>
 					<img src='../../../../../assets/image/dri_cur.png' v-else class='triangle'>
 				</mt-button>
@@ -37,7 +39,12 @@
 				</mt-button>
 			</section>
 		</div>
-		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
+		<section class='nogood f-tac' v-if='goods.length == 0'>
+		  <img src='../../../../../assets/image/nogood.png'>
+			<br><br>
+			<p>未找到商品</P>
+		</section>
+		<div ref="wrapper" class='wrapper'>
 			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
 			  <div v-for='(item,index) in goods' v-bind:key='index' class='mt-10'>
 					<div class='order-wrapper' v-on:click='go(`/good/show/${item.id}`)'>
@@ -48,7 +55,7 @@
 							<h4 class='order-title f-fs2'>{{item.name}}</h4>
 							<p class='order-bread mb-6 f-fs1'>{{item.chpgg}}</p>
 							<p class='order-bread f-fs1'>{{item.shchchj}}</p>
-							<p class='opera f-csp f-pr f-fs1' v-on:click.prevent.stop='edit(item.id)'>销售价格急啊购时可修改<i class='add f-fsn'>+</i></p>
+							<p class='opera f-csp f-pr f-fs1' v-on:click.prevent.stop='edit(item.id)'><i class='add f-fsn'>+</i></p>
 						</section>
 					</div>
 				</div>	
@@ -85,9 +92,12 @@
 		  <header class='factory-header f-tac f-pr'>筛选厂家
 			  <i class='iconfont close' v-on:click='filterVisible3 = false'>&#xe610;</i>
 			</header>
+			<div v-on:click='manuAll'>
+			  <mt-cell title='全部厂家' class='manu-all'></mt-cell>
+			</div>
 		  <mt-checklist
 			  align='right'
-				v-model="search.manufacturers"
+ 				v-model="search.manufacturers"
 				v-bind:options="manufacturers">
 			</mt-checklist>
 			<footer class='manu-opera'>

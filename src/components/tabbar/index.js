@@ -11,6 +11,11 @@ export default {
 			currentIndex: this.selected
 		}
 	},
+	computed: {
+		currentCustomer() {
+			return this.$store.state.shopcar.customer
+		},
+	},
 	methods: {
 	},
 	watch: {

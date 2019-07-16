@@ -9,7 +9,8 @@ export default {
 			state: {
 				name: '',
 				password: ''
-			}
+			},
+			tenantId: this.$store.state.config.tenantId
 		}
 	},
 	watch: {
@@ -32,8 +33,8 @@ export default {
 		}
 	},
 	methods: {
-		login() {
-			this.$http.get('/api/m/user/login', {params: {username: this.name, password: this.password}}).then((res) => {
+		loginer() {
+			this.$http.get('/api/m/user/login', {params: {username: this.name, password: this.password, tenantId: this.tenantId}}).then((res) => {
 				Toast({
 					message: res.data.message
 				})

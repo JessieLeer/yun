@@ -6,8 +6,9 @@ export default {
 		}
 	},
 	methods: {
-		back() {
-			this.$router.back()
+		handleBack() {
+			this.$store.commit('shopcarCusClear')
+			this.$router.push('/shopcar')
 		},
 		go(url) {
 			this.$router.push(url)

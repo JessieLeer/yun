@@ -7,7 +7,7 @@
 			<section class='bread'>
 				<dl class='f-ib'>
 					<dt class='f-ib'>库存：</dt>
-					<dd class='f-ib'>{{selected.stock}}</dd>
+					<dd class='f-ib'>{{stock}}</dd>
 				</dl>
 				<dl class='f-ib'>
 					<dt class='f-ib'>已选：</dt>
@@ -15,7 +15,7 @@
 				</dl>
 				<dl class='color-E43A3D f-fwb f-ib f-tar'>
 					<dt class='f-ib'>小计：</dt>
-					<dd class='f-ib'>¥{{totalPrice}}</dd>
+					<dd class='f-ib'>¥{{totalPrice.toFixed(2)}}</dd>
 				</dl>
 			</section>
 			<mt-field class='price-input shopcar-cell' v-bind:placeholder="pricePlaceholder" v-model='editingPrice' type='number' v-bind:min='0' v-if='user.customerType == 3' v-bind:disabled='selectedLot.pihao ? false : true'>
@@ -25,8 +25,8 @@
 				<mt-cell class='shopcar-cell' v-for='(item,index) in selected.lotnums' v-bind:key='index'>
 					<div slot='title' class='lotnum-wrapper'>
 						<mt-button  size='small' class='lotnum' v-bind:class='item == selectedLot ? "lotnum-cur" : "lotnum-def"' v-on:click='changeLotnum(item)'>
-							<i class='f-fl f-fsn'>{{item.pihao}}</i> 
-							<i class='f-fr f-fsn'>¥{{item.price}}</i>
+							<i class='f-fl f-fsn'>{{item.picihao}}</i> 
+							<i class='f-fr f-fsn'>¥{{item.changePrice == 0 ? item.dbdj : item.changePrice}}</i>
 						</mt-button>
 						<section class='count-wrapper f-tar'>
 							<mt-button size='small' class='count-opera' v-bind:disabled='item.count == "0" ? true : false' v-on:click='indec(item,-5)'>-</mt-button>

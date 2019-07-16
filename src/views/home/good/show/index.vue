@@ -1,14 +1,10 @@
 <template>
   <div class='inner-main'>
 	  <mt-button icon="back" class='back f-tac' v-on:click='back'></mt-button>
-	  <mt-swipe :auto="4000">
-			<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' >
-			  <img v-bind:src='item.image' width='100%' v-on:click='go(item.url)' class='banner' ref='banner0'>
-			</mt-swipe-item>
-		</mt-swipe>
+	  <img v-bind:src='good.photos' width='100%' class='banner' ref='banner0'>
 		<div class='good-info'>
 		  <div class='pl-10 pr-10'>
-				<b class='price'>{{good.price}}</b>
+				<b class='price'>{{good.lowest}} <span v-if='good.highest'>~ {{good.highest}}</span></b>
 				<h3 class='name f-fs2'>{{good.name}}</h3>
 				<mt-badge size="small" class='formation f-fs1' color='#fff'>{{good.chpgg}}</mt-badge>
 				<mt-badge size="small" class='formation f-fs1' color='#fff'>{{good.jx}}</mt-badge>
@@ -43,7 +39,7 @@
 				</dl>
 				<dl class='good-detail'>
 				  <dt class='f-ib'>商品编号：</dt>
-					<dd class='f-ib'>{{good.spbh}}</dd>
+					<dd class='f-ib'>{{good.code}}</dd>
 				</dl> 
 				<dl class='good-detail'>
 				  <dt class='f-ib'>经营范围：</dt>
@@ -58,6 +54,18 @@
 				<dl class='good-detail'>
 				  <dt class='f-ib'>件装数量：</dt>
 					<dd class='f-ib'>{{good.bagShl}}</dd>
+				</dl>
+				<dl class='good-detail'>
+				  <dt class='f-ib'>产品规格：</dt>
+					<dd class='f-ib'>{{good.chpgg}}</dd>
+				</dl>
+				<dl class='good-detail'>
+				  <dt class='f-ib'>剂型：</dt>
+					<dd class='f-ib'>{{good.jx}}</dd>
+				</dl>
+				<dl class='good-detail'>
+				  <dt class='f-ib'>产品单位：</dt>
+					<dd class='f-ib'>{{good.chpdw}}</dd>
 				</dl>
 			</mt-tab-container-item>
 		</mt-tab-container>

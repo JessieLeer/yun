@@ -1,6 +1,9 @@
 <template>
   <mt-popup v-model="cusVisible" position="bottom" class='popup' v-bind:closeOnClickModal='false'>
-		<mt-search v-model="search.name" cancel-text="取消" placeholder="采购商名称/助记码" class='search'></mt-search>
+	  <header class='pop-header'>
+			<mt-button icon="back" class='back' v-on:click='close' v-bind:style='"display:" + backDisplay'></mt-button>
+		  <mt-search v-model="search.name" cancel-text="取消" placeholder="采购商名称/助记码" class='search'></mt-search>
+		</header>
 		<div class='list-wrapper'>
 			<mt-index-list>
 				<mt-index-section v-for='(item,index) in customers' v-bind:key='index' v-bind:index="item.group" v-if='groupVisiable(item)' >

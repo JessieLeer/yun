@@ -20,6 +20,7 @@ import Order from '@/views/home/order/customer/index.vue'
 import OrderGood from  '@/views/home/order/good/index.vue'
 import Index from '@/views/home/index/index.vue'
 import Index1 from '@/views/home/index1/index.vue'
+import Customer from '@/views/home/customer/index.vue'
 import GoodSearch from '@/views/home/good/search/index/index.vue'
 import SearchResult from '@/views/home/good/search/result/index.vue'
 import GoodCate from '@/views/home/good/cate/index.vue'
@@ -33,6 +34,11 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
+		{
+			path: '/',
+			name: '',
+			component: Store.state.user.id == undefined ? Index1 : Store.state.user.customerType == 3 ? Index : Index1
+		},
 		{
 			path: '/login',
 			name: 'login',
@@ -128,6 +134,11 @@ const router = new Router({
 			component: Index1
 		},
 		{
+			path: '/customer',
+			name: 'customer',
+			component: Customer
+		},
+		{
 			path: '/good/cate',
 			name: 'goodCate',
 			component: GoodCate
@@ -143,7 +154,7 @@ const router = new Router({
 			component: SearchResult
 		},
 		{
-			path: '/good/list',
+			path: '/good/list/:cid',
 			name: 'goodList',
 			component: GoodList
 		},
@@ -167,11 +178,11 @@ const router = new Router({
 			name: 'bulletinShow',
 			component: BulletinShow
 		}
-  ]
+  ],
 })
 
 router.beforeEach((to, from, next) => {
-	let noUserPaths = ['/login']
+	let noUserPaths = ['/login','/','/index','/index1']
 	if(noUserPaths.indexOf(to.path) == -1 && Store.state.user.id == undefined) {
 		router.push({ name: 'login' })
 	}

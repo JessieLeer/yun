@@ -1,11 +1,6 @@
 <template>
   <div class='inner-main'>
-	  <mt-header title="选择商品" class='header' fixed>
-			<i class='iconfont ml-10' v-on:click='back' slot='left'>&#xe625;</i>
-		</mt-header>
-		<mt-search v-model="search.name" cancel-text="取消" placeholder="商品名称/助记码" class='search search-gooder' ref='search' @keyup.native.enter="searcher">
-		  <mt-cell v-for="(item,index) in search.results" v-bind:key='index' v-bind:title="item.productName" is-link v-bind:to='`/good/show/${item.id}`'></mt-cell>
-		</mt-search>
+		<csearch v-bind:searchor='search' v-on:handleBack='back'></csearch>
 		<div class='regular' v-show='goods.length == 0'>
 		  <mt-cell title="常购清单" class='bg-grey'></mt-cell>
 			<div v-for='(item,index) in regulars' v-bind:key='index' class='mt-10'>
@@ -17,7 +12,7 @@
 						<h4 class='order-title f-fs2'>{{item.name}}</h4>
 						<p class='order-bread mb-6 f-fs1'>{{item.specification}}</p>
 						<p class='order-bread f-fs1'>{{item.vendor}}</p>
-						<p class='opera f-csp f-pr f-fs1' v-on:click.prevent.stop='edit(item.productId)'>销售价格急啊购时可修改<i class='add f-fsn'>+</i></p>
+						<p class='opera f-csp f-pr f-fs1' v-on:click.prevent.stop='edit(item.productId)'>销售价格点击可修改<i class='add f-fsn f-tac'>+</i></p>
 					</section>
 				</div>
 			</div>

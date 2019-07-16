@@ -45,10 +45,10 @@ export default {
 				let firstId = this.search.customers[0]
 				for(let customer of this.customers) {
 					if(customer.datas.filter((item) => {
-						return item.customerId = firstId
+						return item.customerId == firstId
 					}).length > 0){
 						return customer.datas.filter((item) => {
-						  return item.customerId = firstId
+						  return item.customerId == firstId
 					  })[0].customerName
 					}
 				}
@@ -58,10 +58,14 @@ export default {
 			return this.page.current == this.page.total ? true : false
 		},
 	},
+	watch: {
+		'search.customers'(newVal,oldVal) {
+		}
+	},
 	mounted() {
 		this.$nextTick(() => {
       this.contentH = document.documentElement.clientHeight - 
-      this.$refs.wrapper.getBoundingClientRect().top
+      this.$refs.wrapper.getBoundingClientRect().top + 160
     })
 	},
 	created() {
@@ -71,6 +75,10 @@ export default {
 		ccustomer
 	},
 	methods: {
+		back() {
+			let url = this.user.customerType == '3' ? '/user/index' : '/user/index1'
+			this.$router.push(url)
+		},
 		handleCustomerSelect() {
 			this.orders = []
 			this.index(1)
@@ -89,7 +97,7 @@ export default {
 		cancel(billId) {
 			MessageBox({
 				title: '',
-				message: '确定删除该组商品?',
+				message: '确定取消这组商品吗?',
 				showCancelButton: true,
 				cancelButtonText: '我再想想',
 			}).then((action) => {

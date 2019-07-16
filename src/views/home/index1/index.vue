@@ -7,36 +7,35 @@
 			 	  搜索商品名称/商品编号/助记码
 				</section>
 			</mt-cell>
-			<router-link slot='right' to='/good/cate' class='cate f-tac'>
+			<router-link slot='right' to='/good/cate' class='cate f-tac' v-if='user.id'>
 				<img src='../../../assets/image/cater.png' width='16'><br>
 				<i class='f-fsn f-fs1'>分类</i>
 			</router-link>
+			<router-link slot='right' to='/login' class='login f-tac' v-else>登录</router-link>
 		</header>
 		<!--<mt-cell v-bind:title="shop.name" to='/company' class='shop-name bg-grey' is-link>
 		</mt-cell>-->
 		<mt-swipe :auto="4000">
 			<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index'>
-			  <a v-bind:href='item.url' target='_blank'>
-			    <img v-bind:src='item.photos' width='100%' class='banner' ref='banner0'>
-				</a>
+			  <img v-bind:src='serverUrl + item.photos' width='100%' class='banner' ref='banner0'>
 			</mt-swipe-item>
 		</mt-swipe>
 		<section class='notice'>
 		  <i class='notice-index f-fsn'>通知公告：</i>
 			<vue-seamless-scroll v-bind:data="notices" class='seamless-warp' v-bind:class-option="classOption">
 			  <router-link v-for='(item,index) in notices' v-bind:key='index' v-bind:to='`/bulletin/show/${item.id}`' class='notice-item f-db'>
-				  {{item.title.substr(0,18)}}... 
+				  {{item.title.substr(0,12)}}... 
 				</router-link>
 			</vue-seamless-scroll>
 		</section>
 		<mt-navbar class='tab-nav' v-model="current">
-			<mt-tab-item id="1" class='f-fs3 f-fwb'>首页</mt-tab-item>
-			<mt-tab-item id="2" class='f-fs3 f-fwb'>商品</mt-tab-item>
+			<mt-tab-item id="1" class='f-fs3 f-fwb'>推荐产品</mt-tab-item>
+			<mt-tab-item id="2" class='f-fs3 f-fwb'>全部产品</mt-tab-item>
 		</mt-navbar>
 		<mt-tab-container v-model="current">
 			<mt-tab-container-item id="1">
 				<div v-for='(item,index) in regulars' v-bind:key='index' class='mt-10'>
-					<div class='order-wrapper' v-on:click='go("/good/show/" + item.productId)'>
+					<div class='order-wrapper' v-on:click='go("/good/show/" + item.id)'>
 						<section class='order-image'>
 							<img v-bind:src='item.photos ? item.photos : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557389741298&di=31efb58a423ee236e999cb4345362a09&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201503%2F21%2F20150321220253_HRsSm.jpeg"' width='110' class='f-fl'>
 						</section>
@@ -47,7 +46,7 @@
 								<img src='../../../assets/image/factory.png' width='14' class='factory'>
 								{{item.shchchj}}
 							</p>
-							<p class='opera f-csp f-pr f-fs1' v-on:click.stop.prevent='edit(item.productId)'>销售{{item.sales}}<i class='add f-fsn'>+</i></p>
+							<p class='opera f-csp f-pr f-fs1' v-on:click.stop.prevent='edit(item.id)'>已售 {{item.sales}} {{item.chpdw}}<i class='add f-fsn'>+</i></p>
 						</section>
 					</div>
 				</div>	
@@ -81,16 +80,14 @@
 										<img src='../../../assets/image/factory.png' width='14' class='factory'>
 										{{item.shchchj}}
 									</p>
-									<p class='opera f-csp f-pr f-fs1' v-on:click.stop='edit(item.id)'>销售{{item.sales}}<i class='add f-fsn'>+</i></p>
+									<p class='opera f-csp f-pr f-fs1' v-on:click.stop='edit(item.id)'>已售 {{item.sales}} {{item.chpdw}}<i class='add f-fsn'>+</i></p>
 								</section>
 							</div>
 						</div>	
 					</mt-loadmore>
 				</div>	
 				<br>
-				<p class='nomore f-tac f-fs1'>
-		      {{isAllLoaded ? '没有更多了' : '下拉加载更多'}}
-		    </p>
+				<p class='nomore f-tac f-fs1' v-if='isAllLoaded && good.data.length > 0'>没有更多了</p>
 			</mt-tab-container-item>
 		</mt-tab-container>
 		<cportnav></cportnav>

@@ -1,4 +1,5 @@
-import { MessageBox,Toast } from 'mint-ui';
+import { MessageBox,Toast } from 'mint-ui'
+import csearch from '@/components/search/index.vue'
 
 export default {
 	name: 'search1',
@@ -14,18 +15,6 @@ export default {
 		}
 	},
 	watch: {
-		'search.name'(newValue, oldValue) {
-			this.$http.get('/api/m/product/findProductBySearchKey', {params: {key: newValue, tenantId: this.user.groupId, userId: this.user.id}}).then((res) => {
-				this.search.result = res.data.data
-			})
-		}, 
-		'search.result'(newVal, oldValue) {
-			if(newVal.length > 0) {
-				document.getElementsByClassName('mint-search')[0].style.height = '100vh'
-			}else{
-				document.getElementsByClassName('mint-search')[0].style.height = 'auto'
-			}
-		} 
 	},
 	computed: {
 		user() {
@@ -40,12 +29,14 @@ export default {
       
     })
 	},
+	components: {
+		csearch
+	},
  	methods: {
 		back() {
 			this.$router.back()
 		},
 		go(url) {
-			console.log('hello')
 			this.$router.push(url)
 		},
 		historyIndex() {
@@ -71,10 +62,6 @@ export default {
 					})
 				}
 			})
-		},
-		searcher() {
-			this.$router.push(`/good/search/result/${this.search.name}`)
-			window.location.reload()
 		}
 	}
 }

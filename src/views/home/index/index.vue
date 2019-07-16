@@ -12,16 +12,15 @@
 			</router-link> 
 			<router-link slot='right' to='/login' class='login f-tac' v-else>登录</router-link>
 		</header>
-		<div class='g-header'>
+		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
+		  <div class='g-header'>
 			<mt-swipe class='banner-wrapper' :auto="4000">
 				<mt-swipe-item v-for='(item,index) in banners' v-bind:key='index' class='f-tac'>
-				  <a v-bind:href='item.url' target='_blank'>
-					  <img v-bind:src='item.photos' width='100%' class='banner' ref='banner0'>
-					</a>
+				  <img v-bind:src='serverUrl + item.photos' width='100%' class='banner' ref='banner0'>
 				</mt-swipe-item>
 			</mt-swipe>
 			<nav class='nav f-cb'>
-				<router-link to='/good/promotion' class='nav-item f-tac f-fl f-fs2'>
+				<router-link to='/good/promotion' class='nav-item f-tac f-fl f-fs2 f-dn'>
 					<img src='../../../assets/image/sale.png' width='32'>
 					<p>促销</p>
 				</router-link>
@@ -43,14 +42,13 @@
 		  <i class='notice-index f-fsn'>通知公告：</i>
 			<vue-seamless-scroll v-bind:data="notices" class='seamless-warp' v-bind:class-option="classOption">
 			  <router-link v-for='(item,index) in notices' v-bind:key='index' v-bind:to='`/bulletin/show/${item.id}`' class='notice-item f-db'>
-				  {{item.title.substr(0,18)}}... 
+				  {{item.title.substr(0,12)}}... 
 				</router-link>
 			</vue-seamless-scroll>
 		</section>
 		<h2 class='hot-title f-tac'>
 		  <i class='dec-line f-ib'></i>热销产品<i class='dec-line f-ib'></i>
 		</h2>
-		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
 			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
 				<ul class='hots f-tac'>
 					<li class='hot f-tal f-ib' v-for='(item,index) in hots' v-bind:key='index'>
@@ -65,10 +63,8 @@
 				</ul>
 			</mt-loadmore>
 		</div>	
-		<br>
-		<p class='nomore f-tac f-fs1'>
-		  {{isAllLoaded ? '没有更多了' : '下拉加载更多'}}
-		</p>
+		<p class='nomore f-tac f-fs1' v-if='isAllLoaded'>没有更多了</p>
+		<i class='top iconfont' v-on:click='loadTop' v-if='this.page.current > 1'>&#xe615;</i>
 		<tabbar selected='/index'></tabbar>
 	</div>
 </template>

@@ -1,9 +1,7 @@
 <template>
   <div class='inner-main'>
 	  <header title="" class='header'>
-		  <router-link to="/user/index" slot="left">
-				<i class='iconfont ml-10'>&#xe625;</i>
-			</router-link>
+		  <i class='iconfont ml-10' slot='left' v-on:click='back'>&#xe625;</i>
 			<nav class="nav f-ib">
 				<mt-button size="small" class='nav-btn' v-bind:class='search.status == "" ? "status-cur" : ""' v-on:click='changeStatus("")'>全部</mt-button>
 				<mt-button size="small" class='nav-btn' v-bind:class='search.status == "1" ? "status-cur" : ""' v-on:click='changeStatus("1")'>已提取</mt-button>
@@ -23,10 +21,16 @@
 			  </mt-button>
 			</router-link>
 		</section>
-		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
-			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
+		<section class='nogood f-tac' v-if='orders.length == 0'>
+		  <br></br>
+		  <img src='../../../../assets/image/norder.png'>
+			<br>
+			<p>未找到订单</P>
+		</section>
+		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;" >
+			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false' v-if='orders.length > 0'>
 				<div v-for='(item,index) in orders' v-bind:key='index' class='order-area'>
-					<mt-cell v-bind:title="item.customerName" is-link to='/order/good'>
+					<mt-cell v-bind:title="item.customerName" v-bind:to='"/user/order/show/"+item.billId'>
 						<span class='status f-fs2'>{{item.status == 0 ? "未提取" : item.status == 1 ? "已提取" : item.status == 2 ? "已取消" : item.status == 3 ? "已发货" : item.status == 4 ? "已支付" : "已同步"}}</span>
 					</mt-cell>
 					<router-link v-bind:to='"/user/order/show/"+item.billId' class='f-db w-100'>
@@ -37,14 +41,14 @@
 							</section>
 							<div class='order-info f-pr'>
 								<section class='order-good f-fs1'>
-									<i class='good-count f-fsn'>共计：x{{item.orderProductVOS.length}}批商品</i>
+									<i class='good-count f-fsn'>共计：{{item.orderProductVOS.length}}种商品</i>
 									<i class='good-price f-fsn f-tar'>¥{{item.cost}}</i>
 								</section>
 								<time class='order-time f-fs1'>{{item.createDate ? item.createDate.substr(0,10) : ''}}</time>
 							</div>
 						</div>
 					</router-link>
-					<mt-cell title="">
+					<mt-cell title="" v-if='item.status != 2'>
 						<mt-button type="default" size='small' class='cancel f-fs1' v-on:click='cancel(item.billId)'>取消订单</mt-button>
 					</mt-cell>
 				</div>
@@ -55,7 +59,6 @@
 				<mt-index-section v-for='(item,index) in customers' v-bind:index="item.group" v-bind:key='index' v-if='item.datas.length > 0'>
 					<mt-checklist
 						title=""
-					  value='customerId'
 						v-model="search.customers"
 						v-bind:options="item.options">
 					</mt-checklist>

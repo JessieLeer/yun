@@ -5,6 +5,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		backDisplayer: {
+			type: String,
+			default: 'block'
+		}
 	},
 	data() {
 		return {
@@ -12,6 +16,7 @@ export default {
 			search: {
 				name: ''
 			},
+			backDisplay: this.backDisplayer
 		}
 	},
 	computed: {
@@ -19,7 +24,16 @@ export default {
 			return this.$store.state.customer.data
 		}
 	},
+	mounted() {
+		
+	},
 	methods: {
+		goHome() {
+			this.$router.replace({path: this.$store.state.user.customerType == 3 ? '/index' : '/index1'})
+		},
+		close() {
+			this.cusVisible = false
+		},
 		groupVisiable(group) {
 			let datas = this.customers.filter((item) => {
 				return item == group

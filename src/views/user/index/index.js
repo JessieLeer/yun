@@ -5,6 +5,7 @@ export default {
 	data() {
 		return {
 			notice: '',
+			balance: 0
 		}
 	},
 	components: {
@@ -21,6 +22,7 @@ export default {
 	methods: {
 		balanceShow() {
 			this.$http.get('/api/m/balance/findBalanceByUser', {params: {userId: this.user.id}}).then((res) => {
+				this.balance = res.data.data.balance
 				this.notice = res.data.data.message
 			})
 		}

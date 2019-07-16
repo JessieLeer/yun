@@ -45,6 +45,9 @@ export default {
 					message: res.data.message
 				})
 				if(res.data.code == 'success') {
+					/*this.$http.get('http://xt.ysk360.com:8086/m/user/clearCache', {params: {userId: this.user.id}}).then((res) => {
+						console.log(res)
+					})*/
 					this.$store.commit('logout')
 					window.setTimeout(() => {
 						this.$router.push('/login')

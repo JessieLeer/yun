@@ -9,7 +9,7 @@
 		<label class='label f-fs2'>原密码</label>
 		<mt-field class='user-password' placeholder="请输入原密码" type="password" v-model="password.old"></mt-field>
 		<br>
-		<label class='label f-fs2'>新密码</label>
+		<label class='label f-fs2'>新密码<i class='tip f-fs1 f-fsn'>(必须六位数以上)</i></label>
 		<mt-field class='user-password' placeholder="请输入新密码" type="password" v-model="password.new"></mt-field>
 		<br>
 		<label class='label f-fs2'>确认新密码</label>

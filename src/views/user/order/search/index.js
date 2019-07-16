@@ -32,13 +32,12 @@ export default {
 			this.cusVisible = false
 			this.$http.get('/api/m/order/findOrderByUserSearchKey', {params: {size: 10, start: page, userId: this.user.id, productName: this.name}}).then((res) => {
 				this.orders = this.orders.concat(res.data.data)
-				console.log(this.orders)
 			})
 		},
 		cancel(billId) {
 			MessageBox({
 				title: '',
-				message: '确定删除该组商品?',
+				message: '确定取消这组商品吗?',
 				showCancelButton: true,
 				cancelButtonText: '我再想想',
 			}).then((action) => {

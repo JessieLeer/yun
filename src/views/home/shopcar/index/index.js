@@ -1,5 +1,6 @@
 import { MessageBox,Toast } from 'mint-ui'
 import tabbar from '@/components/tabbar/index.vue'
+import tabbar1 from '@/components/tabbar1/index.vue'
 import ccustomer from '@/components/customer/index.vue'
 import cshopcar from '@/components/shopcar/index.vue'
 
@@ -10,7 +11,7 @@ export default {
 			selectedOrders: [],
 			checkShow: false,
 			selectedAll: false,
-			cusVisible: this.$store.state.shopcar.customer.customerId || this.$store.state.user.customerType == 1 ? false : true,
+			cusVisible: false,
 			popupVisible: false,
 			selected: {
 				lotnums: []
@@ -22,10 +23,13 @@ export default {
 			totalPrice: 0,
 			contact: '',
 			remark: '',
+			contactVisible: false,
+			activities: []
 		}
 	},
 	components: {
 		tabbar,
+		tabbar1,
 		ccustomer,
 		cshopcar
 	},
@@ -67,8 +71,8 @@ export default {
 					lotnums.push({
 						floorPrice: item.accountingPrice,
 						groupId: this.user.groupId,
-						hw: order.hw,
-						hz: order.hz,
+						hw: item.hw,
+						hz: item.hz,
 						productName: order.name,
 						pihao: item.pihao,
 						price: item.price,
@@ -121,6 +125,7 @@ export default {
 							message: res.data.message
 						})
 						if(res.data.code == 'success') {
+							this.$store.dispatch('shopcarIndex')
 							window.setTimeout(() => {
 								window.location.reload()
 							},1000)
@@ -130,19 +135,21 @@ export default {
 			})
 		},
 		handleCusSelected() {
-			if(this.currentCustomer.customerId) {
+			if(this.currentCustomer.customerId || this.user.customerType == 1) {
 				this.$http.get('/api/m/shopping/getShoppingCartByUser', {params: {
-				customerId: this.currentCustomer.customerId,
-					userId: this.user.id
+				customerId: this.currentCustomer.customerId ? this.currentCustomer.customerId : '',
+					userId: this.user.id,
+					tenantId: this.user.groupId
 				}}).then((res) => {
-					for(let item of res.data.data){
+					this.activities = res.data.data.recommendVOS
+					for(let item of res.data.data.shoppingCarts){
 						let totalPrice = 0
 						for(let lot of item.pihaoVO){
-							totalPrice += lot.count*lot.price
+							totalPrice += lot.count*(lot.price*1000)/1000
 						}
 						this.$set(item, 'totalPrice', totalPrice)
 					}
-					this.orders = res.data.data
+					this.orders = res.data.data.shoppingCarts
 				})
 			}
 		},
@@ -152,27 +159,34 @@ export default {
 			})
 		},
 		submit() {
-			this.$http.post('/api/m/order/saveOrder', {
-				beizhu: this.remark,
-				cost: this.amount, 
-				floorPrice: this.accountingTotal,
-				groupId: this.user.groupId,
-				lxr: this.contact,
-				orderForm: 'mobile',
-				orderId: this.user.id,
-				cartIds: this.cartIds,
-				userId: this.currentCustomer.customerId,
-				customerName: this.currentCustomer.customerName,
-				orderMessageDetailVOs: this.lotnums
-			}).then((res) => {
-				if(res.data.code == 'success') {
-					this.$router.push(`/shopcar/result/${this.amount}`)
-				}else{
-					Toast({
-						message: res.data.message
-					})
-				}
-			})
+			if(this.contact == '') {
+				Toast({
+					message: '请填写联系人'
+				})
+			}else{
+				this.$http.post('/api/m/order/saveOrder', {
+					beizhu: this.remark,
+					cost: this.amount, 
+					floorPrice: this.accountingTotal,
+					groupId: this.user.groupId,
+					lxr: this.contact,
+					orderForm: 'mobile',
+					orderId: this.user.id,
+					cartIds: this.cartIds,
+					userId: this.currentCustomer.customerId ,
+					customerName: this.currentCustomer.customerName,
+					orderMessageDetailVOs: this.lotnums
+				}).then((res) => {
+					if(res.data.code == 'success') {
+						this.$store.commit('shopcarClear')
+						this.$router.push(`/shopcar/result/${this.amount}`)
+					}else{
+						Toast({
+							message: res.data.message
+						})
+					}
+				})
+			}
 		}
 	}
 }

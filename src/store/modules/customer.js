@@ -122,12 +122,12 @@ const getters = {
 // actions
 const actions = {
 	customerIndex({commit,rootState},context) {
-		axios.get('/api/m/product', {params: {userId: rootState.user.id,isSalesman: rootState.user.userType}}).then((res) => {
+		axios.get('/api/m/product', {params: {userId: rootState.user.id,isSalesman: rootState.user.customerType}}).then((res) => {
 			commit('customerIndex',res.data.data)
 		})
 	}
 }
-
+ 
 // mutations
 const mutations = {
   customerIndex(state,customers) {

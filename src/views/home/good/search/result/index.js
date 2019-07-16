@@ -18,7 +18,7 @@ export default {
 			stores: [
 				{
 					label: '全部库存',
-					value: ''
+					value: '全部库存'
 				},
 				{
 					label: '库存>50',
@@ -33,7 +33,9 @@ export default {
 					value: '200'
 				}
 			],
-			formulations: [],
+			formulations: [
+				'全部剂型'
+			],
 			manufacturers: [],
 			filterVisible0: false,
 			filterVisible1: false,
@@ -46,7 +48,7 @@ export default {
 				current: 1,
 				total: 1,
 			},
-			contentH: 0,
+			contentH: '100%',
 			popupVisible: false,
 			selectedLot: {},
 			selected: {
@@ -63,7 +65,7 @@ export default {
 			return this.$store.state.shopcar.customer
 		},
 		manuSelected() {
-			return this.search.manufacturers.length == this.manufacturers.length || this.search.manufacturers.length == 0 ? '全部厂家' : this.search.manufacturers.join(',').substr(0,4) + '...'
+			return this.search.manufacturers.length == this.manufacturers.length || this.search.manufacturers.length == 0 ? '全部厂家' : this.search.manufacturers.join(',').substr(0,3) + '...'
 		},
 		isAllLoaded() {
 			return this.page.current == this.page.total ? true : false
@@ -91,9 +93,13 @@ export default {
 	},
 	watch: {
 		'search.name'(newValue, oldValue) {
-			this.$http.get('/api/m/product/findProductBySearchKey', {params: {key: newValue, tenantId: this.user.groupId, userId: this.user.id}}).then((res) => {
-				this.search.result = res.data.data
-			})
+			if(newValue == '') {
+				this.$router.push('/good/search')
+			}else{
+				this.$http.get('/api/m/product/findProductBySearchKey', {params: {key: newValue, tenantId: this.user.groupId, userId: this.user.id}}).then((res) => {
+					this.search.result = res.data.data
+				})
+			}
 		}, 
 		isManuAll(val, oldVal) {
 			if(val == true) {
@@ -109,10 +115,6 @@ export default {
 		}
 	},
 	mounted() {
-    this.$nextTick(() => {
-      this.contentH = document.documentElement.clientHeight - 
-      this.$refs.wrapper.getBoundingClientRect().top
-    })
   },
 	created() {
 		this.index(1)
@@ -125,8 +127,9 @@ export default {
 			this.$router.push(url)
 		},
 		manuAll() {
-			this.search.manufacturers = this.manufacturers
+			this.search.manufacturers = []
 			this.filterVisible3 = false
+			this.index(1)
 		},
 		index(page) {
 			this.$http.get('/api/m/product/findProductsBytenantIdDesc', {params: {tenantId: this.user.groupId, userId: this.user.id, key: this.search.name, size: 10, start: page, inventory: this.search.store == '全部库存' ? '' : this.search.store, formulation: this.search.formulation == '全部剂型' ? '' : this.search.formulation, vendor: this.search.manufacturers.join(','), range: this.search.type == '全部商品' ? '' : 0}}).then((res) => {
