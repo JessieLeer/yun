@@ -170,7 +170,7 @@ export default {
 						this.popVisable = false
 						this.$store.dispatch('shopcarIndex')
 						window.setTimeout(() => {
-							//window.location.reload()
+							window.location.reload()
 						},1000)
 					}
 				})

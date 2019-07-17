@@ -5,7 +5,7 @@ import vuex from '../store'
 
 const service = axios.create({
 	baseURL: process.env.BASE_URL,
-  timeout: 5000
+  timeout: 10000
 })
 
 service.interceptors.request.use(

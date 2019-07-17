@@ -23,7 +23,7 @@
 			</div>
 			<mt-cell label="修改" class='shopcar-cell'>
 				<section class='price' slot='title' v-on:click='edit(item)'>
-					<i class='price-now f-fsn f-fs1'>¥{{item.totalPrice.toFixed()}}</i>
+					<i class='price-now f-fsn f-fs1'>¥{{item.totalPrice.toFixed(2)}}</i>
 					<i class='iconfont color-grey f-fr' style='font-size: 12px' slot='icon'>修改 &#xe631;</i>
 				</section>
 			</mt-cell>

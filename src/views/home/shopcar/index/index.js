@@ -45,7 +45,7 @@ export default {
 			for(let item of this.orders) {
 				amount += item.totalPrice
 			}
-			return amount
+			return amount.toFixed(2)
 		},
 		accountingTotal() {
 			let accounting = 0
@@ -75,7 +75,7 @@ export default {
 						hz: item.hz,
 						productName: order.name,
 						pihao: item.pihao,
-						price: item.price,
+						accountingPrice: item.accountingPrice,
 						productId: item.productId,
 						shl: item.count
 					})
@@ -145,7 +145,7 @@ export default {
 					for(let item of res.data.data.shoppingCarts){
 						let totalPrice = 0
 						for(let lot of item.pihaoVO){
-							totalPrice += lot.count*(lot.price*1000)/1000
+							totalPrice += lot.count*(lot.accountingPrice*1000)/1000
 						}
 						this.$set(item, 'totalPrice', totalPrice)
 					}
