@@ -93,6 +93,8 @@ export default {
 			this.updateTotal()
 		},
 		indec(item, num) {
+			num = parseInt(num)
+			item.count = parseInt(item.count)
 			if(item.count + num < 0) {
 				item.count = 0
 			}else if(item.count + num > item.amount) {

@@ -16,10 +16,10 @@
 				</ul>
 			</aside>
 			<div class='cate-con'>
-			  <p v-if='cateData.length == 0' class='f-tac'>当前分类下无数据</p>
+			  <p v-if='cateData.length == 0' class='f-tac'></p>
 			  <div class='cate-con-wrapper' v-for='(item,index) in cateData' v-bind:key='index' v-else>
 					<mt-cell v-bind:title="item.categoryName" v-bind:to="`/good/list/${item.id}`" is-link class='second-name'></mt-cell>
-					<p class='cate-thirds f-tac' v-if='item.productCategoryVOS.length == 0'>当前分类下无数据</p>
+					<p class='cate-thirds f-tac' v-if='item.productCategoryVOS.length == 0'></p>
 					<ul class='cate-thirds' v-else>
 						<li class='cate-third f-tac f-ib' v-for='(child,i) in item.productCategoryVOS'>
 							<router-link v-bind:to='`/good/list/${child.id}`'>

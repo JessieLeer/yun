@@ -2,7 +2,7 @@
   <div class='main'>
 	  <br>
 	  <h1 class='f-tac'>
-	    <img src='../../../assets/image/logo@3x.png' width='145'>
+	    <img v-bind:src='logo' width='145'>
 		</h1>
 		<form class='form form-login f-tac'>
 		  <h3 class='welcome'>欢迎<br><small class='f-fwn'>账号登录</small></h3>

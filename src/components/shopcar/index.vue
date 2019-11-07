@@ -26,12 +26,12 @@
 					<div slot='title' class='lotnum-wrapper'>
 						<mt-button  size='small' class='lotnum' v-bind:class='item == selectedLot ? "lotnum-cur" : "lotnum-def"' v-on:click='changeLotnum(item)'>
 							<i class='f-fl f-fsn'>{{item.picihao}}</i> 
-							<i class='f-fr f-fsn'>¥{{item.changePrice == 0 ? item.dbdj : item.changePrice}}</i>
+							<i class='f-fr f-fsn'>¥{{item.accountingPrice}}</i>
 						</mt-button>
 						<section class='count-wrapper f-tar'>
-							<mt-button size='small' class='count-opera' v-bind:disabled='item.count == "0" ? true : false' v-on:click='indec(item,-5)'>-</mt-button>
+							<mt-button size='small' class='count-opera' v-bind:disabled='item.count == "0" ? true : false' v-on:click='indec(item,-1)'>-</mt-button>
 							<input type='text' v-model='item.count' class='count-count f-tac f-ib' v-on:change='countInput(item)'>
-							<mt-button size='small' class='count-opera' v-bind:disabled='item.count == item.store ? true : false' v-on:click='indec(item,5)'>+</mt-button>
+							<mt-button size='small' class='count-opera' v-bind:disabled='item.count == item.store ? true : false' v-on:click='indec(item,1)'>+</mt-button>
 						</section>
 					</div>
 				</mt-cell>

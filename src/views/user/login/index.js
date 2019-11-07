@@ -4,13 +4,15 @@ export default {
 	name: 'login',
 	data() {
 		return {
+			serverUrl: this.$store.state.config.serverUrl,
 			name: '',
 			password: '',
 			state: {
 				name: '',
 				password: ''
 			},
-			tenantId: this.$store.state.config.tenantId
+			tenantId: this.$store.state.config.tenantId,
+			logo: ''
 		}
 	},
 	watch: {
@@ -32,7 +34,16 @@ export default {
 			return false
 		}
 	},
+	created() {
+		this.logoShow()
+	},
 	methods: {
+		/*-- 获取logo图片 --*/
+		logoShow() {
+			this.$http.get('/api/m/notice/findLogoByTenantId', {params: {tenantId: this.tenantId}}).then((res) => {
+				this.logo = this.serverUrl + res.data.data.photos
+			})
+		},
 		loginer() {
 			this.$http.get('/api/m/user/login', {params: {username: this.name, password: this.password, tenantId: this.tenantId}}).then((res) => {
 				Toast({
